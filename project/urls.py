@@ -1,26 +1,21 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, print_function, unicode_literals
+"""project URL Configuration
 
-from cms.sitemaps import CMSSitemap
-from django.conf import settings
-from django.conf.urls import *  # NOQA
-from django.conf.urls.i18n import i18n_patterns
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.8/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Add an import:  from blog import urls as blog_urls
+    2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
+"""
+from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-admin.autodiscover()
-
-urlpatterns = i18n_patterns('',
-    url(r'^admin/', include(admin.site.urls)),  # NOQA
-    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
-        {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^select2/', include('django_select2.urls')),
-    url(r'^', include('cms.urls')),
-)
-
-# This is only needed when using runserver.
-if settings.DEBUG:
-    urlpatterns = patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',  # NOQA
-            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        ) + staticfiles_urlpatterns() + urlpatterns  # NOQA
+urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+]
