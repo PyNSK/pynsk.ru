@@ -1,16 +1,23 @@
-"""
-WSGI config for project project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
-"""
-
 import os
+from wsgiref.util import guess_scheme
 
-from django.core.wsgi import get_wsgi_application
+
+def force_domain(fn):
+    def wrapped(environ, start_response):
+        domain = os.environ.get('DOMAIN')
+        if domain and environ['HTTP_HOST'] != domain:
+            path = environ.get('PATH_INFO', '')
+            protocol = guess_scheme(environ)
+            start_response('301 Redirect', [('Location', '%s://%s%s' % (protocol, domain, path)),])
+            return []
+        return fn(environ, start_response)
+    return wrapped
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
 
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
+
 application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
+application = force_domain(application)
