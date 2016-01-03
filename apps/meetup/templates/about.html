@@ -1,0 +1,38 @@
+{% extends 'layout/fotorama.html' %}
+
+
+{% load url from future %}
+
+
+{% block page %}
+    <section class="content-page">
+        <div class="wrapper">
+            <h1 class="content-page__header">О проекте</h1>
+            <div class="g-content">
+                <p>
+                    Moscow Django Meetup &mdash; это ежемесячные встречи разработчиков на Джанго.
+                </p>
+                <p>
+                    Несколько человек выступают перед публикой с докладами, так
+                    или иначе связанными с веб-разработкой, Python и Django.
+                   <br/>Не обходится и без самого интересного: общения в кулуарах.
+                </p>
+                <p>
+                    Благодаря организаторам, встречи проходят в тёплой компании
+                    проектора и вай-фая. Обычно мы собираемся во вместительных комфортных залах,
+                    например, офисе Mail.ru Group или ФРИИ Сити Холле.
+                </p>
+                <p>
+                    Для тех, кто не может приехать, мы будем стараться проводить
+                    <a href="{% url 'live' %}">онлайн-трансляции</a>
+                    и выкладывать <a href="https://www.youtube.com/moscowdjangoru">видео-записи выступлений</a>.
+                </p>
+                <p>
+                    Участие во встречах бесплатное, надо только зарегистрироваться на событие.
+                </p>
+            </div>
+            {% include 'blocks/gallery.html' %}
+        </div>
+    </section>
+    {% include 'blocks/share.html' with page='about' %}
+{% endblock %}

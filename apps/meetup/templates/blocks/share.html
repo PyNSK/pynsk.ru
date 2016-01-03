@@ -1,0 +1,29 @@
+<section class="like {% if page %}like_page_{{ page }}{% endif %}">
+    {% if not without_wrapper %}
+    <div class="wrapper">
+    {% endif %}
+        <div class="like__wrapper">
+            <ul class="social-likes">
+                {% if page == 'main' %}
+                <li class="github" title="Star Moscowdjango on GitHub">GitHub</li>
+                {% endif %}
+                <li class="facebook" title="Share link on Facebook">Facebook</li>
+                <li class="twitter" data-via="moscowdjango" title="Share link on Twitter">Twitter</li>
+                <li class="plusone" title="Share link on Google+">Google+</li>
+            </ul>
+            <script>
+                var socialLikesButtons = {
+                    github: {
+                        counterUrl: 'https://api.github.com/repos/futurecolors/moscowdjango?callback=?',
+                        convertNumber: function(data) {
+                            return data.data.watchers_count;
+                        },
+                        clickUrl: 'https://github.com/futurecolors/moscowdjango/'
+                    }
+                };
+            </script>
+        </div>
+    {% if not without_wrapper %}
+    </div>
+    {% endif %}
+</section>

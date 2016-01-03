@@ -1,0 +1,45 @@
+{% load pytils_dt markup %}
+
+
+<div class="event__information pull-right">
+    <section class="event__registration">
+        <div class="event__registration-summary">
+            <div class="event-date">{{ event.date|ru_strftime:"%d %B %Y, %H:%M" }}</div>
+            <h2 class="event-place">{{ event.venue|default_if_none:"" }}</h2>
+            <div class="event-address">{{ event.venue.address }}</div>
+        </div>
+        {% if event.is_active %}
+            <div class="event__registration-button">
+                <a href="{{ event.get_registration_url }}" class="btn pull-right">
+                    Я тоже буду!
+                </a>
+            </div>
+        {% endif %}
+        <div class="g-clear"></div>
+    </section>
+    <section class="event__description">
+        {{ event.description|restructuredtext }}
+        {#        {% if not event.is_active %}#}
+        {#            <a href="{% url 'live' %}">Смотреть запись трансляции</a>#}
+        {#        {% endif %}#}
+    </section>
+    {% with event.media_coverages.all as media_coverages %}
+        {% if media_coverages %}
+            <section class="media-coverage">
+                <h1 class="media-coverage__header">Упоминания</h1>
+                <ul class="media-coverage__list">
+                    {% for media_coverage in media_coverages %}
+                        <li class="media-coverage__item" style="background-image: url({{ media_coverage.ico }})">
+                            <a class="media-coverage__link"
+                               href="{{ media_coverage.url }}"
+                               target="_blank">{{ media_coverage }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+    {% endwith %}
+    {% if event.is_active %}
+        {% include 'blocks/map.html' %}
+    {% endif %}
+</div>

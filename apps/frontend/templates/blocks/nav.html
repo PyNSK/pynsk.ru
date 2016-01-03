@@ -1,0 +1,41 @@
+{% load static %}
+{% load nav_tags %}
+
+{% url 'frontend:index' as index_page %}
+{% url 'meetup:speakers' as speakers_page %}
+{% url 'frontend:articles' as articles_page %}
+{% url 'meetup:events' as events_page %}
+{% url 'frontend:about' as about_page %}
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'frontend:index' %}">
+                PyNSK - сайт о Python
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {% menu_element index_page 'Главная' %}
+
+{#                {% menu_element articles_page 'Контент' %}#}
+{#                {% menu_element events_page 'Встречи' %}#}
+                {% menu_element about_page 'О сайте' %}
+
+            </ul>
+        </div>
+        <!-- end of /.navbar-collapse -->
+    </div>
+    <!-- end of /.container -->
+</nav>

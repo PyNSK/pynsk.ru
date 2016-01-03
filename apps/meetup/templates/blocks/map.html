@@ -1,0 +1,17 @@
+{% load static %}
+
+
+{% if event.venue.latitude and event.venue.longitude %}
+    <script src="//api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+        var eventMapParams = {
+            'coords': [{{ event.venue.latitude|escapejs }}, {{ event.venue.longitude|escapejs }}],
+            'baloonContent': '{{ event|escapejs }}'
+        }
+    </script>
+    <div class="event__map-wrapper">
+        <div class="event__map {% if small %}event__map_small{% endif %}" id="map"></div>
+        <div class="event__map-placeholder"></div>
+    </div>
+{% endif %}

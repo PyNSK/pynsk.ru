@@ -1,0 +1,39 @@
+{% extends 'layout/layout.html' %}
+{% load static pytils_dt %}
+
+
+{% block title %}Трансляция {{ event|default_if_none:'следующего события' }}{% endblock %}
+
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/live.css' %}" type="text/css" />
+{% endblock %}
+
+
+{% block page %}
+<div class="live">
+    <h1 class="live__header">
+        Трансляция {{ event|default_if_none:'следующего события' }}
+    </h1>
+
+    {% if event %}
+        <h2 class="live__subheader">{{ event.date|ru_strftime:"%d %B, %H:%M" }}</h2>
+    {% else %}
+        <h2 class="live__subheader" title="Будет объявлено">TBA</h2>
+    {% endif %}
+
+    <div class="live__embed">
+        {{ event.streaming_embed|safe }}
+    </div>
+
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/moscowdjango"
+       data-widget-id="480781295912382465">Твиты о #moscowdjango</a>
+    <script>
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    </script>
+
+</div>
+{% endblock %}

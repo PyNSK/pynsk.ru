@@ -1,0 +1,73 @@
+{% load static %}
+{% load i18n %}
+{% load zinnia %}
+
+<aside class="col-md-4 col-sm-8 col-xs-8">
+    <div class="sidebar">
+
+        <aside id="widget-categories" class="widget">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans "Categories" %}</h3>
+                </div>
+
+                <div class="panel-body">
+                    <h3>{% get_categories %} </h3>
+                </div>
+            </div>
+        </aside>
+
+
+        <aside id="widget-categories" class="widget">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans "Tags" %}</h3>
+                </div>
+
+                <div class="panel-body">
+                    <h3>{% get_tag_cloud template="blocks/tag_cloud.html"%} </h3>
+                </div>
+            </div>
+        </aside>
+
+        {% if user.is_authenticated %}
+            <aside id="widget-tools" class="widget">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% trans "Tools" %}</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+
+                        <ul>
+                            {% if perms.zinnia %}
+                                <li>
+                                    <a href="{% url 'admin:app_list' 'zinnia' %}" title="{% trans "Dashboard" %}">
+                                        {% trans "Dashboard" %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if perms.zinnia.add_entry %}
+                                <li>
+                                    <a href="{% url 'admin:zinnia_entry_add' %}" title="{% trans "Post an entry" %}">
+                                        {% trans "Post an entry" %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% block admin-tools %}
+                            {% endblock admin-tools %}
+                            <li>
+                                <a href="{% url 'admin:logout' %}" title="{% trans "Log out" %}">
+                                    {% trans "Log out" %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        {% endif %}
+
+
+    </div>
+</aside>

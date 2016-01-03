@@ -1,0 +1,108 @@
+/**
+ * Подвал
+ *
+ * @package     moscowdjango
+ * @version     0.1
+ * @author      Golikov Artem <art@futurecolors.ru>
+ * @copyright   Future Colors
+ */
+
+
+/**
+ * @section     Подвал
+ */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 105px;
+    background: url(../images/backgrounds/footer.png) 0 0 repeat-x;
+}
+.footer__menu {
+    margin: 0;
+    padding-top: 34px;
+    float: left;
+    list-style: none;
+}
+.footer__menu-item {
+    position: relative;
+    padding-right: 31px;
+    line-height: 20px;
+    float: left;
+}
+.footer__menu-item:before {
+    content: "•";
+    position: absolute;
+    top: 0;
+    right: 12px;
+    line-height: 20px;
+    color: #2e2e2e;
+    cursor: default;
+}
+.footer__menu-item:last-of-type:before {
+    display: none;
+}
+.footer__menu-link {
+    font-size: 12px;
+    color: #2e2e2e;
+}
+.footer__menu-coming-soon {
+    font-size: 12px;
+    color: #888;
+}
+.footer__copyright {
+    padding-top: 34px;
+    float: right;
+    line-height: 20px;
+    font-size: 12px;
+    color: #2e2e2e;
+}
+.footer__copyright-link {
+    color: #2e2e2e;
+}
+.footer__partners {
+    padding-top: 34px;
+    margin-left: 40px;
+    float: left;
+    line-height: 20px;
+    font-size: 12px;
+    color: #2e2e2e;
+}
+
+@media screen and (max-width: 770px) {
+    .footer {
+        height: 65px;
+    }
+    .footer__menu {
+        padding-top: 25px;
+    }
+    .footer__copyright {
+        padding-top: 25px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .footer {
+        height: 40px;
+    }
+    .footer__menu {
+        padding-top: 12px;
+    }
+    .footer__menu-item {
+        padding-right: 10px;
+    }
+    .footer__menu-item:before {
+        display: none;
+    }
+    .footer__menu-link {
+        font-size: 11px;
+    }
+    .footer__menu-coming-soon {
+        font-size: 11px;
+    }
+    .footer__copyright {
+        padding-top: 12px;
+        font-size: 11px;
+    }
+}

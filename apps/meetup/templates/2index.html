@@ -1,0 +1,55 @@
+{% extends 'layout/layout.html' %}
+
+
+{% load static from staticfiles %}
+
+
+{% block title %}PyNSK{% endblock %}
+
+
+{% block twitter %}
+    {{ block.super }}
+    <meta name="twitter:title" content="PyNSK - Python сообщество">
+    <meta name="twitter:description" content="PyNSK — это ежемесячные встречи разработчиков на Python.
+Несколько человек выступают перед публикой с докладами, так или иначе связанными с веб-разработкой, Python и Django.
+Не обходится и без самого интересного: общения в кулуарах.">
+{% endblock %}
+
+
+{% block page %}
+    {% if main_event %}
+      {% include 'blocks/main_event_header.html' with event=main_event %}
+    {% endif %}
+
+    <section id="about" class="section-about">
+        <div class="container">
+            <div class="body">
+                <h1 class="heading"><span>О&nbsp;проекте</span></h1>
+                <p>MoscowPython - сообщество, появившееся в 2012-м году под именем project.
+                    Первая встреча, прошедшая в Высшей Школе Экономики собрала около 20 человек энтузиастов.
+                    С течением времени стало понятно, что пришла необходимость расширить тематику встреч и
+                    поменять название сообщества на то, что отражает эту широту - так на свет
+                    появилось сообщество MoscowPython с обновлённым именем и сайтом.</p>
+
+                <p>Сегодня на наши встречи собирается больше 100 человек и мы сотрудничаем с
+                    такими компаниями как <a href="">Mail.Ru Group</a>, Рамблер, tceh и другими. Мы рады
+                    объединять российское python-сообщество и вносить свой вклад в развитие IT-экосистемы.
+
+                <h2>Администраторы сообщества:</h2>
+                <p>Валентин Домбровский (<a href="http://travelabs.org/" target="_blank">Travelabs</a>)</p>
+                <p>Михаил Корнеев (<a href="http://navigine.com/" target="_blank">Navigine</a>)</p>
+                <p>Илья Барышев (<a href="http://mybook.ru/" target="_blank">Mybook</a>)</p>
+                <p>Григорий Петров (<a href="https://voximplant.com/" target="_blank">Voximplant</a>)</p>
+                <p>Владимир Филонов (<a href="https://itcanfly.org/" target="_blank">itcanfly</a>)</p>
+
+{#                <div class="text-center signup">#}
+{#                    <a class="btn btn-signup btn-default btn-grey btn-large">Зарегистрироваться</a>#}
+{#                </div>#}
+
+            </div>
+        </div>
+    </section>
+
+    {% include 'blocks/speakers.html' %}
+    {% include 'blocks/archive.html' %}
+{% endblock %}

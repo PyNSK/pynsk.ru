@@ -1,0 +1,55 @@
+<div class="event__talks">
+    {% for talk in event.talks.active %}
+        <article class="event__talk">
+            <a class="event__talk-speaker-link" href="{{ talk.get_absolute_url }}">
+                <img src="{{ talk.speaker.avatar_url }}" class="avatar">
+                <div class="name">
+                    {{ talk.speaker }}
+                    {% if talk.speaker.company_name %}
+                        <div>({{ talk.speaker.company_name }})</div>
+                    {% endif %}
+                </div>
+            </a>
+            <div class="event__talk-content">
+                <h2 class="event__talk-title">
+                    <a class="event__talk-title-link" href="{{ talk.get_absolute_url }}">
+                        {{ talk }}
+                    </a>
+                </h2>
+                <div class="event__talk-description">
+                    {{ talk.description|truncatewords:"25" }}
+                </div>
+                {% if talk.event.votable %}
+                    {% if can_vote %}
+                    <span class="vote js-vote" data-href="{% url 'vote' talk.id %}">
+                        <span class="vote__wrapper">
+                            Проголосовать за доклад
+                        </span>
+                        <span class="vote__error"></span>
+                    </span>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="g-clear"></div>
+        </article>
+    {% endfor %}
+    {% if event.votable and not can_vote %}
+    <div style="text-align: center">
+        <a href="{% url 'vote-results' %}" class="vote">
+            <span class="vote__wrapper">
+                Результаты голосования
+            </span>
+        </a>
+    </div>
+    {% endif %}
+    {% if event.status == 'planning' %}
+        <article class="event__talk">
+            <div class="event__talk-content">
+                <div class="event__talk-description">
+                    Пока список докладчиков формируется. Если хотите выступить - напишите организаторам.
+                    Мы с удовольствием рассмотрим вашу заявку.
+                </div>
+            </div>
+        </article>
+    {% endif %}
+</div>

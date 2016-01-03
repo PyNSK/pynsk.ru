@@ -1,0 +1,21 @@
+{% load pytils_dt %}
+
+<div class="event-header">
+    <div class="container">
+        <h1 class="heading">
+            <span>{{ event.name }} № {{ event.number }}
+                {% if event.date %}
+                    <span class="event-date">
+                        {{ event.date|ru_strftime:"%d %B %Y" }}
+                        {% if event.on_air and event.streaming_embed %}
+                            <sup>live</sup>
+                        {% endif %}
+                        {% if event.status == "draft" %}
+                            <sup>draft</sup>
+                        {% endif %}
+                    </span>
+                {% endif %}
+            </span>
+        </h1>
+    </div>
+</div>
