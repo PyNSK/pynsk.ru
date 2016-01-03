@@ -6,6 +6,7 @@
 {% url 'frontend:articles' as articles_page %}
 {% url 'meetup:events' as events_page %}
 {% url 'frontend:about' as about_page %}
+{% url 'admin:index' as admin_page %}
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -32,6 +33,10 @@
 {#                {% menu_element articles_page 'Контент' %}#}
 {#                {% menu_element events_page 'Встречи' %}#}
                 {% menu_element about_page 'О сайте' %}
+
+                {% if request.user.is_staff %}
+                    {% menu_element admin_page 'Админка' %}
+                {% endif %}
 
             </ul>
         </div>

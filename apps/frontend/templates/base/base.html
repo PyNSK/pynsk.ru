@@ -1,5 +1,6 @@
 {% load static %}
 {% load zinnia %}
+{% load html_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -15,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Theme Blog - Web Template Design</title>
+    <title>{% title_element %}</title>
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
