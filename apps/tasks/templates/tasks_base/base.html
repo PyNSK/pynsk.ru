@@ -1,0 +1,49 @@
+{% load staticfiles %}
+{% load html_tags %}
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="theme-color" content="#1a237e">
+
+    <title>{% title_element %}</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'material/css/ripples.min.css' %}" rel="stylesheet">
+    <link href="{% static 'material/css/material-wfont.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/flipper.css' %}" rel="stylesheet">
+
+</head>
+<body>
+
+
+{% block navbar %}
+    {% include 'blocks/nav.html' %}
+
+    </div>
+{% endblock navbar %}
+
+
+<div class="container cards-list">
+    {% block container %}
+    {% endblock container %}
+</div>
+
+<!--    JAVASCRIPT DEPENENCIES      -->
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script src="{% static 'material/js/ripples.min.js' %}"></script>
+<script src="{% static 'material/js/material.min.js' %}"></script>
+
+
+</body>
+</html>

@@ -172,8 +172,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = False
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
+SECRET_KEY = 'pynsk'
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError as e:
     print(e)

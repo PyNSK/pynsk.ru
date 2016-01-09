@@ -1,3 +1,8 @@
-from django.shortcuts import render
+# coding=utf-8
+from django.views.generic import ListView
 
-# Create your views here.
+from apps.tasks.models import Task
+
+
+class TasksIndexPage(ListView):
+    model = Task
