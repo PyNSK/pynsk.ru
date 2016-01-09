@@ -173,6 +173,7 @@ SECURE_SSL_REDIRECT = False
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECRET_KEY = 'pynsk'
+ZINNIA_MARKUP_LANGUAGE = 'markdown'
 
 try:
     from .local_settings import *

@@ -14,7 +14,7 @@
 {% endblock style %}
 
 {% block container %}
-
+<div class="cards-list">
     <div id="example-row" class="row">
         <h2 class="btn btn-default btn-lg btn-block">Практические задачи</h2>
 
@@ -25,7 +25,7 @@
 
             <div class="col-xs-12 col-md-4 full-card">
                 <div class="flip-card active-card">
-                    <a href="javascript:void(0)">
+                    <a href="{% url 'tasks:task-detail' pk=object.pk %}">
                         <div class="card label-{{ css_cards|random }}">
                             <h6>{{ object.number|stringformat:"03d" }}</h6>
                         </div>
@@ -44,5 +44,5 @@
         {% endfor %}
     </div>
 
-
+</div>
 {% endblock container %}

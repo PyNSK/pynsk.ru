@@ -1,0 +1,28 @@
+{% extends 'tasks_base/base.html' %}
+{% load html_tags %}
+
+{% block style %}
+    <style>
+        a {
+            color: inherit;
+        }
+
+        a:hover {
+            color: inherit;
+        }
+    </style>
+{% endblock style %}
+
+{% block container %}
+
+    <div class="row">
+        <h2 class="btn btn-default btn-lg btn-block">Задача номер {{ object.number|stringformat:"03d" }}</h2>
+    </div>
+
+    <article id="task-{{ object.pk }}">
+        {{ object.html_content|safe }}
+
+    </article>
+
+
+{% endblock container %}
