@@ -1,32 +1,46 @@
 {% extends 'tasks_base/base.html' %}
 {% load html_tags %}
 
+{% block style %}
+    <style>
+        a {
+            color: inherit;
+        }
+
+        a:hover {
+            color: inherit;
+        }
+    </style>
+{% endblock style %}
+
 {% block container %}
 
     <div id="example-row" class="row">
-        <h3 class="btn btn-default btn-lg btn-block">Задачи</h3>
+        <h2 class="btn btn-default btn-lg btn-block">Практические задачи</h2>
 
         {% bts_card_css as  css_cards %}
 
         {% for object in object_list %}
 
+
             <div class="col-xs-12 col-md-4 full-card">
-
                 <div class="flip-card active-card">
+                    <a href="javascript:void(0)">
+                        <div class="card label-{{ css_cards|random }}">
+                            <h6>{{ object.number|stringformat:"03d" }}</h6>
+                        </div>
 
 
-                    <div class="card label-{{ css_cards|random }}">
-                        <h6>{{ object.number|stringformat:"03d" }}</h6>
-                    </div>
-
-                    <div class="well">
-                        <h1>{{ object.title }}</h1>
-                    </div>
+                        <div class="well">
+                            <h4>{{ object.title }}</h4>
+                        </div>
+                    </a>
                 </div>
             </div>
 
+
         {% empty %}
-            <li>Еще нет задач</li>
+            <h1>Еще нет задач</h1>
         {% endfor %}
     </div>
 

@@ -12,4 +12,4 @@ def title_element():
 
 @register.assignment_tag
 def bts_card_css():
-    return ['info', 'default', 'primary', 'success', 'warning', 'danger']
+    return ['info', 'primary', 'success', 'warning', 'danger']

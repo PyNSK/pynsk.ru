@@ -25,13 +25,14 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                {% menu_element index_page 'Главная' %}
+{#                {% menu_element index_page 'Главная' %}#}
+                {% menu_element 'http://pynsk.ru' 'К статьям' %}
 
                 {#                {% menu_element articles_page 'Контент' %}#}
                 {#                {% menu_element events_page 'Встречи' %}#}
-                {% menu_element about_page 'О сайте' %}
+{#                {% menu_element about_page 'О сайте' %}#}
 
                 {% if request.user.is_staff %}
                     {% menu_element admin_page 'Админка' %}
