@@ -7,6 +7,7 @@
 {% url 'meetup:events' as events_page %}
 {% url 'frontend:about' as about_page %}
 {% url 'admin:index' as admin_page %}
+{% url 'tasks:index' as tasks_page %}
 
 <nav class="navbar navbar-inverse">
     <div class="container">
@@ -28,6 +29,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
 {#                {% menu_element index_page 'Главная' %}#}
+                {% menu_element tasks_page 'Все задачи' %}
                 {% menu_element 'http://pynsk.ru' 'К статьям' %}
 
                 {#                {% menu_element articles_page 'Контент' %}#}
