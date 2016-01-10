@@ -4,7 +4,7 @@ import os
 ROOT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-BOWER_COMPONENTS_ROOT = os.path.abspath(os.path.join(PROJECT_PATH, 'components'))
+BOWER_COMPONENTS_ROOT = os.path.abspath(os.path.join(ROOT_PATH, 'components'))
 
 DEBUG = True
 
@@ -38,7 +38,7 @@ STATICFILES_FINDERS = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -182,6 +182,7 @@ BOWER_INSTALLED_APPS = (
     'bootstrap#3.3.6',
     'bootstrap-material-design',
     'underscore',
+    'material-cards#1.0.0'
 )
 
 try:

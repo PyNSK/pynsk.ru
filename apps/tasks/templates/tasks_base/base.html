@@ -14,36 +14,29 @@
 
     <title>{% title_element %}</title>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'material/css/ripples.min.css' %}" rel="stylesheet">
-    <link href="{% static 'material/css/material-wfont.min.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/flipper.css' %}" rel="stylesheet">
+    <!-- Material Design fonts -->
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap Material Design -->
+
+    <link href="{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/my.css' %}" rel="stylesheet">
+
+
+    {#        <link href="{% static 'css/flipper.css' %}" rel="stylesheet">#}
 
     {% block style %}
     {% endblock style %}
 
-    <style>
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .h1,
-        .h2,
-        .h3,
-        .h4,
-        .h5,
-        .h6 {
-            font-family:  Helvetica, Arial, sans-serif !important;
-
-        }
-        p {
-            font-size: 16px;
-        }
-    </style>
 </head>
 <body>
 
@@ -55,14 +48,16 @@
 {% endblock navbar %}
 
 
+
 <div class="container">
+
     {% block container %}
     {% endblock container %}
 </div>
 
 <!--    JAVASCRIPT DEPENENCIES      -->
 
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script src="{% static 'material/js/ripples.min.js' %}"></script>
