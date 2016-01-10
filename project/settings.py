@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     'mptt',
     'tagging',
     'zinnia',
+    'django_pygments',
 
     'apps.meetup',
     'apps.subscribers',
@@ -176,6 +177,20 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECRET_KEY = 'pynsk'
 ZINNIA_MARKUP_LANGUAGE = 'markdown'
+ZINNIA_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',
+    'markdown.extensions.admonition',
+    'markdown.extensions.codehilite',
+    'markdown.extensions.headerid',
+    'markdown.extensions.meta',
+    'markdown.extensions.nl2br',
+    'markdown.extensions.sane_lists',
+    'markdown.extensions.smarty',
+    'markdown.extensions.toc',
+    'markdown.extensions.wikilinks'
+]
+
+
 
 BOWER_INSTALLED_APPS = (
     'jquery#2',

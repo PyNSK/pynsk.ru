@@ -1,16 +1,9 @@
 {% extends 'tasks_base/base.html' %}
 {% load html_tags %}
+{% load static %}
 
 {% block style %}
-    <style>
-        a {
-            color: inherit;
-        }
-
-        a:hover {
-            color: inherit;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
 {% endblock style %}
 
 {% block container %}
@@ -24,8 +17,7 @@
 
         <div class="entry-content">
             <article id="task-{{ object.pk }}">
-                {{ object.html_content|safe }}
-
+                {{ object.html_content|pygment|safe }}
             </article>
         </div>
     </div>
