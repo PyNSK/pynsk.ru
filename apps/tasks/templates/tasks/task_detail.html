@@ -15,14 +15,19 @@
 
 {% block container %}
 
-    <div class="row">
-        <h2 class="btn btn-default btn-lg btn-block">Задача номер {{ object.number|stringformat:"03d" }}</h2>
+    <div class="well">
+        <header class="entry-header">
+            <h1 class="entry-title" itemprop="headline">Задача номер {{ object.number|stringformat:"03d" }}</h1>
+        </header>
+        <hr>
+
+
+        <div class="entry-content">
+            <article id="task-{{ object.pk }}">
+                {{ object.html_content|safe }}
+
+            </article>
+        </div>
     </div>
-
-    <article id="task-{{ object.pk }}">
-        {{ object.html_content|safe }}
-
-    </article>
-
 
 {% endblock container %}

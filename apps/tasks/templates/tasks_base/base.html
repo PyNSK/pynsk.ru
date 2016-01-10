@@ -35,34 +35,40 @@
     {#        <link href="{% static 'css/flipper.css' %}" rel="stylesheet">#}
 
     {% block style %}
+
+
     {% endblock style %}
 
 </head>
+
+
 <body>
 
+{% block body %}
 
-{% block navbar %}
-    {% include 'blocks/nav.html' %}
+    {% block navbar %}
+        {% include 'blocks/nav.html' %}
 
+        </div>
+    {% endblock navbar %}
+
+
+
+    <div class="container">
+
+        {% block container %}
+        {% endblock container %}
     </div>
-{% endblock navbar %}
 
 
+    <!--    JAVASCRIPT DEPENENCIES      -->
 
-<div class="container">
+    <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    {% block container %}
-    {% endblock container %}
-</div>
+    <script src="{% static 'material/js/ripples.min.js' %}"></script>
+    <script src="{% static 'material/js/material.min.js' %}"></script>
 
-<!--    JAVASCRIPT DEPENENCIES      -->
-
-<script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<script src="{% static 'material/js/ripples.min.js' %}"></script>
-<script src="{% static 'material/js/material.min.js' %}"></script>
-
-
+{% endblock body %}
 </body>
 </html>
