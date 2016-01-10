@@ -197,7 +197,6 @@ BOWER_INSTALLED_APPS = (
     'bootstrap#3.3.6',
     'bootstrap-material-design',
     'underscore',
-    'material-cards#1.0.0'
 )
 
 try:
