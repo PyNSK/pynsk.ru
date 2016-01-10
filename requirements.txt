@@ -44,4 +44,3 @@ dj-database-url==0.3.0
 django-blog-zinnia
 django-bower==5.0.4
 Pygments==2.0.2
-django-pygments
