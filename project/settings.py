@@ -4,8 +4,9 @@ import os
 ROOT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
+BOWER_COMPONENTS_ROOT = os.path.abspath(os.path.join(PROJECT_PATH, 'components'))
+
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -31,11 +32,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    'djangobower.finders.BowerFinder',
 )
 
 TEMPLATES = [
@@ -58,6 +55,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
                 'zinnia.context_processors.version',  # Optional
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ]
         }
     }
@@ -96,6 +97,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'djangobower',
     'storages',
     'pytils',
     'googlecharts',
@@ -174,6 +176,13 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECRET_KEY = 'pynsk'
 ZINNIA_MARKUP_LANGUAGE = 'markdown'
+
+BOWER_INSTALLED_APPS = (
+    'jquery#2',
+    'bootstrap#3.3.6',
+    'bootstrap-material-design',
+    'underscore',
+)
 
 try:
     from .local_settings import *

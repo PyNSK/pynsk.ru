@@ -42,3 +42,4 @@ dj-database-url==0.3.0
 # articles
 
 django-blog-zinnia
+django-bower==5.0.4
