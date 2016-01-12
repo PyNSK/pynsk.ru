@@ -30,7 +30,7 @@ pytest-django==2.8.0
 pytest-cov==1.8.1
 responses==0.3.0
 httpretty==0.8.0
-django-debug-toolbar==1.2.1
+django-debug-toolbar==1.4
 coveralls>=1.0a1
 -e git+https://github.com/bitly/bitly-api-python@8f51e7775938238398da4c8cb619dd3609c76f3d#egg=bitly_api-master
 
@@ -44,3 +44,5 @@ dj-database-url==0.3.0
 django-blog-zinnia
 django-bower==5.0.4
 Pygments==2.0.2
+django-extensions
+django-compressor

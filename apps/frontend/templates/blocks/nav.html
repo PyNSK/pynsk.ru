@@ -8,6 +8,7 @@
 {% url 'frontend:about' as about_page %}
 {% url 'admin:index' as admin_page %}
 {% url 'tasks:index' as tasks_page %}
+{% url 'home' as blog_home %}
 
 <nav class="navbar navbar-inverse">
     <div class="container">
@@ -31,6 +32,7 @@
 {#                {% menu_element index_page 'Главная' %}#}
                 {% menu_element tasks_page 'Все задачи' %}
                 {% menu_element 'http://pynsk.ru' 'К статьям' %}
+                {% menu_element blog_home 'Блог' %}
 
                 {#                {% menu_element articles_page 'Контент' %}#}
                 {#                {% menu_element events_page 'Встречи' %}#}
