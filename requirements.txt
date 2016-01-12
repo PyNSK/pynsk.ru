@@ -46,3 +46,4 @@ django-bower==5.0.4
 Pygments==2.0.2
 django-extensions
 django-compressor
+mezzanine
