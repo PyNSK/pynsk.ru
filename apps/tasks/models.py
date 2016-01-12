@@ -1,5 +1,7 @@
+import markdown
 from django.contrib.sites.models import Site
 from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -38,10 +40,10 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
             _('last update'), default=timezone.now)
 
     categories = models.ManyToManyField(
-        'zinnia.Category',
-        blank=True,
-        related_name="%(app_label)s_%(class)s_related",
-        verbose_name=_('categories'))
+            'zinnia.Category',
+            blank=True,
+            related_name="%(app_label)s_%(class)s_related",
+            verbose_name=_('categories'))
 
     @property
     def publication_date(self):
@@ -100,6 +102,15 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
             previous_next = (previous, next)
             setattr(self, 'previous_next', previous_next)
         return previous_next
+
+    @property
+    def link(self):
+        # return reverse('apps.tasks.views.TaskPage', kwargs={'pk': self.id})
+        return reverse('tasks:task-detail', kwargs={'pk': self.id})
+
+    @property
+    def rss_content(self):
+        return self.html_preview
 
     @property
     def short_url(self):
