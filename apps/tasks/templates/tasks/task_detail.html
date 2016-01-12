@@ -23,6 +23,26 @@
             </article>
             <hr/>
 
+            {% if object.tips %}
+                {% for tip in object.tips %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button type="button" class="btn btn-raised btn-success spoiler-trigger" data-toggle="collapse">
+                                Подсказка {{ forloop.counter }}: {{ tip.title }}
+                            </button>
+                        </div>
+                        <div class="panel-collapse collapse out">
+                            <div class="panel-body">
+                                {{ tip.html_content|safe }}
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
             <div class="row">
                 <div class="col-md-8">
                     <h3>Поделиться с друзьями:</h3>
@@ -56,4 +76,10 @@
     </div>
 
 
+    <script>
+        $(".spoiler-trigger").click(function () {
+            $(this).parent().next().collapse('toggle');
+        });
+
+    </script>
 {% endblock container %}

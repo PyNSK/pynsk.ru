@@ -1,4 +1,3 @@
-import markdown
 from django.contrib.sites.models import Site
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
@@ -113,6 +112,10 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
         return self.html_preview
 
     @property
+    def tips(self):
+        return Tip.objects.filter(task=self)
+
+    @property
     def short_url(self):
         """
         Returns the entry's short url.
@@ -155,3 +158,21 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
         permissions = (('can_view_all', 'Can view all entries'),
                        ('can_change_status', 'Can change status'),
                        ('can_change_author', 'Can change author(s)'),)
+
+
+class Tip(ContentEntry):
+    STATUS_CHOICES = ((DRAFT, _('draft')),
+                      (HIDDEN, _('hidden')),
+                      (PUBLISHED, _('published')))
+
+    task = models.ForeignKey(Task)
+
+    title = models.CharField(
+            _('title'), max_length=255)
+
+    status = models.IntegerField(
+            _('status'), db_index=True,
+            choices=STATUS_CHOICES, default=DRAFT)
+
+    def __str__(self):
+        return "Подсказка '{}' для задачи '{}'".format(self.title, self.task.title)
