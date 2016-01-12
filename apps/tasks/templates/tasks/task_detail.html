@@ -10,16 +10,40 @@
 
     <div class="well">
         <header class="entry-header">
-            <h1 class="entry-title" itemprop="headline">Задача номер {{ object.number|stringformat:"03d" }}: {{ object.title }}</h1>
+
+            <h1 class="entry-title" itemprop="headline">Задача
+                номер {{ object.number|stringformat:"03d" }}: {{ object.title }}</h1>
+
         </header>
         <hr>
 
         <div class="entry-content">
             <article id="task-{{ object.pk }}">
                 {{ object.html_content|pygment|safe }}
-
             </article>
+            <hr/>
+
+            <div class="row">
+                <div class="col-md-8">
+                    Поделиться с друзьями
+
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="blockquote-reverse">
+                        <p><b>Теги:</b></p>
+                        {% for tag in object.tags_list %}
+                            {{ tag }}
+                        {% endfor %}
+                    </blockquote>
+                </div>
+            </div>
         </div>
+    </div>
+
+
+    <div class="well">
+        <header><h4>Комментарии:</h4></header>
+
     </div>
 
 {% endblock container %}
