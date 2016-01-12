@@ -38,7 +38,7 @@ urlpatterns = patterns(
         url(r'^humans.txt$', 'django.views.static.serve', {'document_root': ROOT_PATH, 'path': 'AUTHORS.txt'}),
         url(r'^admin/', include(admin.site.urls)),
 
-        url(r'gnfdgdsf', include('apps.meetup.urls', namespace='meetup')),
+        # url(r'gnfdgdsf', include('apps.meetup.urls', namespace='meetup')),
         url(r'hgfhfdghfghf', include('apps.frontend.urls', namespace='frontend')),
         url(r'', include('apps.tasks.urls', namespace='tasks')),
 

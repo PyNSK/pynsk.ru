@@ -8,21 +8,15 @@ from django_comments.models import CommentFlag
 from zinnia.managers import DRAFT, HIDDEN, PUBLISHED
 from zinnia.models_bases.entry import CoreEntry, ContentEntry, ExcerptEntry, ImageEntry, FeaturedEntry, AuthorsEntry, \
     TagsEntry, RelatedEntry, LeadEntry, CategoriesEntry
-from zinnia.url_shortener import get_url_shortener
 
 
-class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, FeaturedEntry, TagsEntry):
+class Task(ContentEntry, ImageEntry, TagsEntry):
     STATUS_CHOICES = ((DRAFT, _('draft')),
                       (HIDDEN, _('hidden')),
                       (PUBLISHED, _('published')))
 
     title = models.CharField(
             _('title'), max_length=255)
-
-    slug = models.SlugField(
-            _('slug'), max_length=255,
-            unique_for_date='creation_date',
-            help_text=_("Used to build the entry's URL."))
 
     status = models.IntegerField(
             _('status'), db_index=True,
@@ -37,12 +31,6 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
 
     last_update = models.DateTimeField(
             _('last update'), default=timezone.now)
-
-    categories = models.ManyToManyField(
-            'zinnia.Category',
-            blank=True,
-            related_name="%(app_label)s_%(class)s_related",
-            verbose_name=_('categories'))
 
     @property
     def publication_date(self):
@@ -105,7 +93,7 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
     @property
     def link(self):
         # return reverse('apps.tasks.views.TaskPage', kwargs={'pk': self.id})
-        return reverse('tasks:task-detail', kwargs={'pk': self.id})
+        return reverse('tasks:task-detail', kwargs={'pk': self.pk})
 
     @property
     def rss_content(self):
@@ -115,13 +103,6 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
     def tips(self):
         return Tip.objects.filter(task=self)
 
-    @property
-    def short_url(self):
-        """
-        Returns the entry's short url.
-        """
-        return get_url_shortener()(self)
-
     def save(self, *args, **kwargs):
         """
         Overrides the save method to update the
@@ -129,21 +110,6 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
         """
         self.last_update = timezone.now()
         super(Task, self).save(*args, **kwargs)
-
-    @models.permalink
-    def get_absolute_url(self):
-        """
-        Builds and returns the entry's URL based on
-        the slug and the creation date.
-        """
-        creation_date = self.creation_date
-        if timezone.is_aware(creation_date):
-            creation_date = timezone.localtime(creation_date)
-        return ('zinnia:entry_detail', (), {
-            'year': creation_date.strftime('%Y'),
-            'month': creation_date.strftime('%m'),
-            'day': creation_date.strftime('%d'),
-            'slug': self.slug})
 
     def __str__(self):
         return '%s: %s' % (self.title, self.get_status_display())
@@ -153,7 +119,7 @@ class Task(ContentEntry, RelatedEntry, LeadEntry, ExcerptEntry, ImageEntry, Feat
         get_latest_by = 'creation_date'
         verbose_name = _('task')
         verbose_name_plural = _('tasks')
-        index_together = [['slug', 'creation_date'],
+        index_together = [['creation_date'],
                           ['status', 'creation_date']]
         permissions = (('can_view_all', 'Can view all entries'),
                        ('can_change_status', 'Can change status'),
