@@ -7,23 +7,30 @@
 </head>
 <body>
 
+<p>#python #pynsk #pythondaily #pythondigestdayli #pydaily</p>
+<p>Дневной дайджест: {{ date|date:"d.m.Y" }}</p>
+<p>Встречайте новый раздел - "Дневной дайджест".</p>
+<p>Будь в курсе новостей Python-мира. Каждый день в группе мы будем публиковать интересные новости и ссылки.</p>
+<p>Вступайте в группу и ничего не пропустите.</p>
+
+
 {% regroup items by section as groups %}
-
-
 {% for data in groups %}
     <div class="items-group-container">
-        <p>{{ data.grouper.title }} <br /> {% crete_hr_line  data.grouper.title %}</p>
+    <br/>
+        <p>{{ data.grouper }} <br /> {% crete_hr_line  data.grouper.title %}</p>
 
         {% for item in data.list %}
             <div class="item-container">
-
                 <p>- {{ item.title }} {{ item.link }}</p>
-{#                {% with item=item %}#}
-{#                    {% include "blocks/_item.html" %}#}
-{#                {% endwith %}#}
             </div>
         {% endfor %}
     </div>
 {% endfor %}
+
+
+<br/>
+<p>Добавляйте интересные Python-ссылки через форму: http://pythondigest.ru/add/</p>
+
 </body>
 </html>

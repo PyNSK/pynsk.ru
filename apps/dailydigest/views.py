@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 from django.shortcuts import render
 
@@ -12,8 +14,12 @@ def switch_section(old_name):
     }.get(old_name, old_name)
 
 
-def daily(request):
-    resp = requests.get('http://pythondigest.ru/api/items/2016/01/13/')
+def base_daily(request, date):
+    resp = requests.get('http://pythondigest.ru/api/items/{}/{}/{}/'.format(
+            date.year,
+            date.month,
+            date.day
+    ))
     # resp = requests.get('http://127.0.0.1:8000/api/items/2016/01/13/')
     items = []
     if resp and resp.json() and resp.json()['ok']:
@@ -21,4 +27,15 @@ def daily(request):
 
     for item in items:
         item['section'] = switch_section(item['section__title'])
-    return render(request, 'daily.html', {'items': items})
+    return render(request, 'daily.html', {'items': items, 'date': date})
+
+
+def daily(request, year, month, day):
+    return base_daily(request, datetime.datetime(
+            year=int(year), month=int(month), day=int(day)))
+
+
+def daily_now(request):
+    now = datetime.datetime.now()
+    now -= datetime.timedelta(days=1)
+    return base_daily(request, now)
