@@ -17,7 +17,8 @@
 
             {% for object in object_list %}
 
-                <a href="{% url 'tasks:task-detail' pk=object.pk %}" title="Теги задачи: {{ object.tags_list|join:', '}}">
+                <a href="{% url 'tasks:task-detail' pk=object.pk %}"
+                   title="Теги задачи: {{ object.tags_list|join:', ' }}">
                     <div class="col-xs-12 col-md-4">
                         <div class="card label-{{ css_cards|random }}">
                             <div class="card-image">
@@ -32,22 +33,6 @@
                         </div>
                     </div>
                 </a>
-
-                {##}
-                {#            <div class="col-xs-12 col-md-4 full-card">#}
-                {#                <div class="flip-card active-card">#}
-                {#                    <a href="{% url 'tasks:task-detail' pk=object.pk %}">#}
-                {#                        <div class="card label-{{ css_cards|random }}">#}
-                {#                            <h6>{{ object.number|stringformat:"03d" }}</h6>#}
-                {#                        </div>#}
-                {##}
-                {##}
-                {#                        <div class="well">#}
-                {#                            <h4>{{ object.title }}</h4>#}
-                {#                        </div>#}
-                {#                    </a>#}
-                {#                </div>#}
-                {#            </div>#}
 
 
             {% empty %}

@@ -27,7 +27,8 @@
                 {% for tip in object.tips %}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button type="button" class="btn btn-raised btn-success spoiler-trigger" data-toggle="collapse">
+                            <button type="button" class="btn btn-raised btn-success spoiler-trigger"
+                                    data-toggle="collapse">
                                 Подсказка {{ forloop.counter }}: {{ tip.title }}
                             </button>
                         </div>
@@ -74,7 +75,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
         $(".spoiler-trigger").click(function () {

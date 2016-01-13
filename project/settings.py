@@ -1,6 +1,8 @@
 # Django settings for moscowdjango project.
 import os
 
+from django import VERSION as DJANGO_VERSION
+
 ROOT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -22,11 +24,13 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(PROJECT_PATH, '../deploy/static')
+STATIC_ROOT = os.path.join(ROOT_PATH, 'gen_static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(ROOT_PATH, 'build'),
+    os.path.join(ROOT_PATH, 'static'),
+    os.path.join(ROOT_PATH, 'apps', 'theme', 'static'),
+    os.path.join(ROOT_PATH, 'apps', 'blog_theme', 'static'),
 )
 
 STATICFILES_FINDERS = (
@@ -61,6 +65,9 @@ TEMPLATES = [
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
+            ],
+            "builtins": [
+                "mezzanine.template.loader_tags",
             ],
         }
     }
@@ -111,6 +118,9 @@ TEMPLATE_DIRS = ('',)
 INSTALLED_APPS = (
     # 'suit',
 
+    'apps.blog_theme',
+    # 'apps.theme',
+    "mezzanine_pagedown",
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -222,6 +232,17 @@ BOWER_INSTALLED_APPS = (
     'underscore',
 )
 
+if DJANGO_VERSION < (1, 9):
+    del TEMPLATES[0]["OPTIONS"]["builtins"]
+
+CACHES = {
+    'default': {
+        # 'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        # 'LOCATION': '127.0.0.1:11211',
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATES[0]['OPTIONS']['context_processors']
 
 LOGGING = {
@@ -251,6 +272,26 @@ LOGGING = {
         },
     }
 }
+
+SITE_PREFIX = 'blog/'
+BLOG_SLUG = '/blog/'
+# PAGES_SLUG = '/pages/'
+# APPEND_SLASH = True
+
+
+# THEME
+
+JQUERY_FILENAME = 'jquery.js'
+
+#####################
+# PAGEDOWN SETTINGS #
+#####################
+RICHTEXT_WIDGET_CLASS = 'mezzanine_pagedown.widgets.PageDownWidget'
+RICHTEXT_FILTER = 'mezzanine_pagedown.filters.custom'
+RICHTEXT_FILTERS = (RICHTEXT_FILTER,)
+PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra', 'codehilite', 'toc')
+RICHTEXT_FILTER_LEVEL = 3
+PAGEDOWN_SERVER_SIDE_PREVIEW = True
 
 try:
     from mezzanine.utils.conf import set_dynamic_settings

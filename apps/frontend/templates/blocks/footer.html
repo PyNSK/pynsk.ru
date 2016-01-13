@@ -1,36 +1,25 @@
 {% load nav_tags %}
 
-{% url 'frontend:about' as about_page %}
-{% url 'frontend:contact' as contact_page %}
+<footer class="footer-distributed container">
 
-<div class="container">
-    <div class="row">
-        <!-- copyright -->
-        <div class="col-md-4 col-sm-4">
-            copyright &copy; 2015 <a href="#" style="margin-left: 4px;">Your website Link</a>
-            <br>
-            Theme by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+    <div class="container">
+        <div class="footer-right">
+
+            <a href="http://vk.com/pynsk"><i class="fa fa-vk"></i></a>
+            <a href="http://www.facebook.com/PyNskCom"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/py_nsk"><i class="fa fa-twitter"></i></a>
+
+            <a href="http://github.com/PyNSK/"><i class="fa fa-github"></i></a>
+
         </div>
 
-        <!-- footer share button -->
-        <div class="col-md-4 col-sm-4">
-            <ul class="social-share text-center">
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            </ul>
-            <!-- /.social-share -->
-        </div>
+        <div class="footer-left">
 
-        <!-- footer-nav -->
-        <div class="col-md-4 col-sm-4">
-            <ul class="footer-nav">
-                {% menu_element about_page 'О сайте' %}
-                {% menu_element contact_page 'Контакты' %}
-            </ul>
-            <!-- /.footer-nav -->
+            <p class="footer-links">
+                <a href="#">Главная</a>
+                ·
+                <a href="http://pynsk.ru">Статьи</a>
+            </p>
         </div>
     </div>
-</div>
+</footer>

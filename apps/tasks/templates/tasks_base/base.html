@@ -35,6 +35,11 @@
 
     {#        <link href="{% static 'css/flipper.css' %}" rel="stylesheet">#}
 
+
+    {% block head %}
+    {% endblock head %}
+
+    {% block extra_head %}{% endblock %}
     {% block style %}
 
 
@@ -43,23 +48,30 @@
 </head>
 
 
-<body>
+<body class="body-site">
 
 {% block body %}
 
     {% block navbar %}
         {% include 'blocks/nav.html' %}
-
-        </div>
     {% endblock navbar %}
 
 
 
-    <div class="container">
+    <main class="content">
+        <div class="container">
+            {% block container %}
+            {% endblock container %}
+        </div>
+    </main>
 
-        {% block container %}
-        {% endblock container %}
-    </div>
+
+
+
+    {% block footer %}
+        {% include 'blocks/footer.html' %}
+    {% endblock footer %}
+
 
 
     <!--    JAVASCRIPT DEPENENCIES      -->
