@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     # 'apps.meetup',
     # 'apps.subscribers',
     'apps.frontend',
+    'apps.dailydigest',
     'apps.tasks',
 
 )
