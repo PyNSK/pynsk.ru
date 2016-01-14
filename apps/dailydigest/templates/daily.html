@@ -7,13 +7,9 @@
 </head>
 <body>
 
-<p>#python #pynsk #pythondaily #pythondigestdayli #pydaily</p>
+<p>#python #pynsk #pythondaily #pydaily</p>
 <p>Дневной дайджест: {{ date|date:"d.m.Y" }}</p>
-<p>Встречайте новый раздел - "Дневной дайджест".</p>
-<p>Будь в курсе новостей Python-мира. Каждый день в группе мы будем публиковать интересные новости и ссылки.</p>
-<p>Вступайте в группу и ничего не пропустите.</p>
-
-
+{{ initial_text|safe }}
 
 {% for category, links in items.items %}
     {% if links %}

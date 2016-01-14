@@ -27,3 +27,17 @@ class DailyIssue(models.Model):
         ordering = ['-pk']
         verbose_name = u'Выпуск дневного дайджеста'
         verbose_name_plural = u'Выпуски дневного дайджеста'
+
+
+class InitialText(models.Model):
+    content = models.TextField(verbose_name='Текст')
+    weight = models.PositiveIntegerField(default=100, verbose_name='Вес')
+    is_active = models.BooleanField(verbose_name='Активна', default=True, )
+
+    def __str__(self):
+        return self.content[:50]
+
+    class Meta:
+        ordering = ['is_active', 'weight', '-pk']
+        verbose_name = u'Вводный текст дневного дайджеста'
+        verbose_name_plural = u'Вводные тексты дневного дайджеста'

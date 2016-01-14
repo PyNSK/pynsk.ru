@@ -1,10 +1,28 @@
+import bisect
 import datetime
+import os
+import random
 
+import itertools
 import requests
+from django.conf import settings
 from django.shortcuts import render
+from apps.dailydigest.models import InitialText
 
 
-def switch_section(old_name):
+def get_initial_text():
+    weighted_choices = InitialText.objects.filter(is_active=True).values('content', weight)
+    choices, weights = zip(*weighted_choices)
+    cumdist = list(itertools.accumulate(weights))
+    x = random.random() * cumdist[-1]
+    return choices[bisect.bisect(cumdist, x)]
+
+def get_initial_texts() -> list:
+    with open(os.path.join(settings.ROOT_PATH, 'apps', "dailydigest", 'data', 'initial_texts.html')) as fio:
+        return [x for x in fio.read().split('_+-SYMBOL-+_') if x]
+
+
+def switch_section(old_name: str) -> str:
     return {
         'Интересные проекты, инструменты, библиотеки': 'Библиотеки',
         'Новости': "Главные новости",
@@ -42,7 +60,14 @@ def base_daily(request, date):
 
         del item['section__title']
 
-    return render(request, 'daily.html', {'items': result, 'date': date})
+    return render(
+            request, 'daily.html',
+            {
+                'items': result,
+                'date': date,
+                'initial_text': get_initial_text(),
+            }
+    )
 
 
 def daily(request, year, month, day):
