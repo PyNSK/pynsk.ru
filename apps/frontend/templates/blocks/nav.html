@@ -8,7 +8,6 @@
 {% url 'frontend:about' as about_page %}
 {% url 'admin:index' as admin_page %}
 {% url 'tasks:index' as tasks_page %}
-{% url 'home' as blog_home %}
 {% url 'dailydigest:index' as daily_now %}
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -40,7 +39,7 @@
                 {#                {% menu_element about_page 'О сайте' %}#}
 
                 {% if request.user.is_staff %}
-                    {% menu_element blog_home 'Блог' %}
+                    {% menu_element '/blog/' 'Блог' %}
                     {% menu_element daily_now 'Дайджест' %}
                     {% menu_element admin_page 'Админка' %}
                 {% endif %}
