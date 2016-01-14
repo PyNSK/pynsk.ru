@@ -35,8 +35,8 @@ if settings.USE_MODELTRANSLATION:
 
 urlpatterns += [
 
-    url("^blog$", direct_to_template, {"template": "index.html"}, name="home"),
-    url("^blog/", include("mezzanine.urls")),
+    # url("^blog/$", direct_to_template, {"template": "index.html"}, name="home"),
+    url("", include("mezzanine.urls")),
 ]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error

@@ -99,7 +99,7 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.SitePermissionMiddleware",
     # Uncomment the following if using any of the SSL settings:
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
-    "mezzanine.pages.middleware.PageMiddleware",
+    # "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 
 )
@@ -275,8 +275,8 @@ LOGGING = {
     }
 }
 
-SITE_PREFIX = 'blog/'
-BLOG_SLUG = '/blog/'
+SITE_PREFIX = '/blog'
+BLOG_SLUG = 'blog/'
 # PAGES_SLUG = '/pages/'
 # APPEND_SLASH = True
 
