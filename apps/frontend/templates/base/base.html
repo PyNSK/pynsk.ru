@@ -1,99 +1,105 @@
 {% load static %}
 {% load zinnia %}
 {% load html_tags %}
-
+{% load mezzanine_tags %}
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-
-<html class="no-js"> <!--<![endif]-->
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 <head>
 
     <!-- meta -->
     <meta charset="utf-8">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <title>
+        {% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}
+    </title>
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
-    <title>{% title_element %}</title>
+    {% compress css %}
 
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}">
 
+        {% block head_css %}{% endblock head_css %}
+
+
+        <link rel="stylesheet" href="{% static 'css/my.css' %}">
+        {% block extra_css %}{% endblock %}
+    {% endcompress %}
+
+
+    {% compress js %}
+        {% block head_js %} {% endblock head_js %}
+        {% block extra_js %}{% endblock %}
+    {% endcompress %}
+
+    <!--[if lt IE 9]>
+        <script src="{% static "js/html5shiv.js" %}"></script>
+        <script src="{% static "js/respond.min.js" %}"></script>
+        <![endif]-->
+
+
+    {% block extra_head %}{% endblock %}
 </head>
 
-<body id="resourcePage">
-{% block body %}
+<body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}body-site{% endblock %}">
 
 
-    {% block nav %}
-        {% include "blocks/nav.html" %}
-    {% endblock nav %}
+{% block nav %}
+    {% include "blocks/nav.html" %}
+{% endblock nav %}
 
-    <main>
-        {% block main %}
-            {% block header %}
-                <!-- header begin -->
-                <header class="page-head">
-                    <div class="header-wrapper text-center">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <h1>Resources</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.container -->
+<div class="container">
+    {% nevercache %}
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
                     </div>
-                    <!-- /.header-wrapper -->
-                </header> <!-- /.page-head (header end) -->
-            {% endblock header %}
-
-            <section class="page-content">
-                <div class="container-fluid">
-                    <div class="row">
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endnevercache %}
+</div>
 
 
+<main class="content">
+    <div class="{% block container_class %}container{% endblock container_class %}">
+        <div class="row">
+            {% block body %}
 
-                        {% include "blocks/articles.html" %}
-
-                        <!-- sidebar -->
-                        {% include "blocks/sidebar.html" %}
-                        <!-- end of sidebar -->
-
-                    </div>
-                </div>
-            </section>
-
-        {% endblock main %}
-    </main>
+            {% endblock body %}
+        </div>
+    </div>
+</main>
 
 
-        {% include 'blocks/footer.html' %}
+<footer class="{% block footer_class %}footer-distributed container{% endblock footer_class %}">
 
+    {% include 'blocks/footer.html' %}
 
-    <!--  Necessary scripts  -->
+</footer>
 
-    {% block scripts %}
-        <script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/jQuery.scrollSpeed.js' %}"></script>
+<!--  Necessary scripts  -->
 
-        <!-- smooth-scroll -->
+{% block footer_js %}
+    {% include 'blocks/footer_js.html' %}
+{% endblock footer_js %}
 
-        <script>
-            $(function () {
-                jQuery.scrollSpeed(100, 1000);
-            });
-        </script>
+{% block extra_footer_js %}
 
-    {% endblock scripts %}
-
-{% endblock body %}
+{% endblock extra_footer_js %}
 
 </body>
 </html>

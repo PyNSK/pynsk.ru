@@ -83,6 +83,12 @@
     padding-top: 80px;
 }
 
+.navbar a {
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
 .footer-distributed {
     background-color: #37474F;
     box-shadow: 0 1px 1px 0 #37474F;
@@ -95,12 +101,6 @@
 
 }
 
-.navbar a {
-    font-size: 14px;
-    font-weight: 400;
-
-}
-
 .footer-distributed .footer-left p {
     color: #8f9296;
     font-size: 14px;
@@ -110,7 +110,7 @@
 /* Footer links */
 
 .footer-distributed p.footer-links {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     color: #ffffff;
     margin: 0 0 10px;

@@ -14,6 +14,7 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+SITE_TITLE = "PyNSK - сайт о Python"
 MANAGERS = ADMINS
 TIME_ZONE = 'Asia/Novosibirsk'
 LANGUAGE_CODE = 'ru-ru'
@@ -149,7 +150,7 @@ INSTALLED_APPS = (
     "mezzanine.blog",
     "mezzanine.forms",
     "mezzanine.galleries",
-    "mezzanine.twitter",
+    # "mezzanine.twitter",
     "mezzanine.accounts",
 
     # 'apps.meetup',
@@ -230,6 +231,7 @@ BOWER_INSTALLED_APPS = (
     'bootstrap#3.3.6',
     'bootstrap-material-design',
     'underscore',
+    'font-awesome'
 )
 
 if DJANGO_VERSION < (1, 9):

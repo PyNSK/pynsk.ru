@@ -1,187 +1,229 @@
-{% extends 'tasks_base/base.html' %}
+{% extends 'base/base.html' %}
 {% load pages_tags mezzanine_tags i18n staticfiles %}
 {% load static %}
 
-{% block head %}
+
+{% block extra_head %}
     {% ifinstalled mezzanine.blog %}
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
         <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
     {% endifinstalled %}
+{% endblock extra_head %}
 
-{% endblock head %}
+{% block head_css %}
 
-{% block navbar %}
-    {{ block.super }}
-    {% nevercache %}
-        {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
+    <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+
+    {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+    {% endif %}
+    {% ifinstalled cartridge.shop %}
+        <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+        {% if LANGUAGE_BIDI %}
+            <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
         {% endif %}
-    {% endnevercache %}
-{% endblock navbar %}
+    {% endifinstalled %}
+{% endblock %}
 
-{% block container %}
+{% block head_js %}
+    <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static "js/bootstrap-extras.js" %}"></script>
+{% endblock head_js %}
 
-    <div class="well">
-        Категории
+
+{% block container_class %}container-fluid{% endblock container_class %}
+{% block body %}
+
+    <div class="col-md-8 middle panel">
+        {% block main %}{% endblock %}
     </div>
 
-    <div class="cards-list well">
+    <div class="col-md-4 right">
+        {% nevercache %}
+            {% include "includes/language_selector.html" %}
+            {% include "includes/user_panel.html" %}
+        {% endnevercache %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% block right_panel %}
 
-        <h1 style="text-align: center">Статьи</h1>
+                    {% ifinstalled mezzanine.twitter %}
+                        {% include "twitter/tweets.html" %}
+                    {% endifinstalled %}
 
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
+
+
+
+                {% endblock %}
             </div>
         </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-        </div>
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
-                    pellentesque
-                    urna varius vitae.</p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-
-        <!-- Pagination -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
-
     </div>
 
+{% endblock body %}
+{##}
+{##}
 
-
-{% endblock container %}
+{#{% block container %}#}
+{##}
+{##}
+{##}
+{#    <div class="col-md-8">#}
+{##}
+{#        <div class="cards-list well">#}
+{#            <!-- Projects Row -->#}
+{#            <div class="row">#}
+{##}
+{##}
+{#                <div class="col-md-6 portfolio-item">#}
+{#                    <a href="#">#}
+{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
+{#                    </a>#}
+{#                    <h3>#}
+{#                        <a href="#">Project Name</a>#}
+{#                    </h3>#}
+{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
+{#                        pellentesque#}
+{#                        urna varius vitae.</p>#}
+{#                </div>#}
+{#                <div class="col-md-6 portfolio-item">#}
+{#                    <a href="#">#}
+{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
+{#                    </a>#}
+{#                    <h3>#}
+{#                        <a href="#">Project Name</a>#}
+{#                    </h3>#}
+{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
+{#                        pellentesque#}
+{#                        urna varius vitae.</p>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            <!-- /.row -->#}
+{##}
+{#            <!-- Projects Row -->#}
+{#            <div class="row">#}
+{#                <div class="col-md-6 portfolio-item">#}
+{#                    <a href="#">#}
+{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
+{#                    </a>#}
+{#                    <h3>#}
+{#                        <a href="#">Project Name</a>#}
+{#                    </h3>#}
+{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
+{#                        pellentesque#}
+{#                        urna varius vitae.</p>#}
+{#                </div>#}
+{#                <div class="col-md-6 portfolio-item">#}
+{#                    <a href="#">#}
+{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
+{#                    </a>#}
+{#                    <h3>#}
+{#                        <a href="#">Project Name</a>#}
+{#                    </h3>#}
+{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
+{#                        pellentesque#}
+{#                        urna varius vitae.</p>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{##}
+{#            <!-- Projects Row -->#}
+{#            <div class="row">#}
+{#                <div class="col-md-6 portfolio-item">#}
+{#                    <a href="#">#}
+{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
+{#                    </a>#}
+{#                    <h3>#}
+{#                        <a href="#">Project Name</a>#}
+{#                    </h3>#}
+{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
+{#                        pellentesque#}
+{#                        urna varius vitae.</p>#}
+{#                </div>#}
+{#                <div class="col-md-6 portfolio-item">#}
+{#                    <a href="#">#}
+{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
+{#                    </a>#}
+{#                    <h3>#}
+{#                        <a href="#">Project Name</a>#}
+{#                    </h3>#}
+{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
+{#                        pellentesque#}
+{#                        urna varius vitae.</p>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            <!-- /.row -->#}
+{##}
+{##}
+{#            <!-- Pagination -->#}
+{#            <div class="row text-center">#}
+{#                <div class="col-lg-12">#}
+{#                    <ul class="pagination">#}
+{#                        <li>#}
+{#                            <a href="#">&laquo;</a>#}
+{#                        </li>#}
+{#                        <li class="active">#}
+{#                            <a href="#">1</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">2</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">3</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">4</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">5</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="#">&raquo;</a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- /.row -->#}
+{##}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class="col-md-4">#}
+{##}
+{#        <section class="well well-sm">#}
+{#            <ul class="list-group list-group-flush">#}
+{##}
+{#                <li class="list-group-item">#}
+{##}
+{#                    <a href="http://pynsk.ru/">#}
+{#                        <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Категории статей</span></h4>#}
+{#                    </a>#}
+{##}
+{#                    <ul class="list-group" id="categories">#}
+{##}
+{#                        {% for category in categoies %}#}
+{#                        {% endfor %}#}
+{#                        <li class="list-group-item">#}
+{#                            <a href="http://pynsk.ru/category/api-vsemu-golova.html" style="font-size: 14px">#}
+{#                                <i class="fa fa-folder-open fa-lg"></i> API всему голова#}
+{#                            </a>#}
+{#                        </li>#}
+{##}
+{#                    </ul>#}
+{#                </li>#}
+{##}
+{##}
+{#            </ul>#}
+{#        </section>#}
+{##}
+{##}
+{#        <div class="well">#}
+{#            Категории статей#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#{% endblock container %}#}

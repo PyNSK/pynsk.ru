@@ -2,11 +2,14 @@
 {% load html_tags %}
 {% load static %}
 
-{% block style %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
-{% endblock style %}
+{% block meta_title %}Задача {{ object.number|stringformat:"03d" }}{% endblock %}
 
-{% block container %}
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+{% endblock extra_css %}
+
+{% block body %}
 
     <div class="well">
         <header class="entry-header">
@@ -76,10 +79,16 @@
         </div>
     </div>
 
+
+{% endblock body %}
+
+{% block extra_footer_js %}
+
+    {{ block.super }}
     <script>
         $(".spoiler-trigger").click(function () {
             $(this).parent().next().collapse('toggle');
         });
 
     </script>
-{% endblock container %}
+{% endblock extra_footer_js %}

@@ -2,43 +2,38 @@
 {% load html_tags %}
 {% load staticfiles %}
 
-{% block style %}
+{% block meta_title %}Задачи{% endblock %}
 
-{% endblock style %}
+{% block body %}
 
-{% block container %}
+    <h1 style="text-align: center">Практические задачи</h1>
+    <hr>
+    {% bts_card_css as  css_cards %}
 
+    {% for object in object_list %}
 
-    <div class="cards-list">
-        <div id="example-row" class="row">
-            <h1 style="text-align: center">Практические задачи</h1>
-            <hr>
-            {% bts_card_css as  css_cards %}
-
-            {% for object in object_list %}
-
-                <a href="{% url 'tasks:task-detail' pk=object.pk %}"
-                   title="Теги задачи: {{ object.tags_list|join:', ' }}">
-                    <div class="col-xs-12 col-md-4">
-                        <div class="card label-{{ css_cards|random }}">
-                            <div class="card-image">
-                                <img class="img-responsive"
-                                     src="{% static 'images/task_card_backgroud.png' %}">
-                                <span class="card-title">Задача {{ object.number|stringformat:"03d" }}</span>
-                            </div>
-
-                            <div class="card-content">
-                                <p>{{ object.title }}</p>
-                            </div>
-                        </div>
+        <a href="{% url 'tasks:task-detail' pk=object.pk %}"
+           title="Теги задачи: {{ object.tags_list|join:', ' }}">
+            <div class="col-xs-12 col-md-4">
+                <div class="card label-{{ css_cards|random }}">
+                    <div class="card-image">
+                        <img class="img-responsive"
+                             src="{% static 'images/task_card_backgroud.png' %}">
+                        <span class="card-title">Задача {{ object.number|stringformat:"03d" }}</span>
                     </div>
-                </a>
+
+                    <div class="card-content">
+                        <p>{{ object.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
 
 
-            {% empty %}
-                <h1>Еще нет задач</h1>
-            {% endfor %}
-        </div>
+    {% empty %}
+        <h4>Еще нет задач</h4>
+    {% endfor %}
 
-    </div>
-{% endblock container %}
+
+
+{% endblock body %}
