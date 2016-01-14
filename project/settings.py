@@ -51,8 +51,8 @@ TEMPLATES = [
                 'django.core.context_processors.media',
                 'django.core.context_processors.static',
                 'django.core.context_processors.request',
-                'apps.meetup.context.menu',
-                'apps.meetup.context.all_events_processor',
+                # 'apps.meetup.context.menu',
+                # 'apps.meetup.context.all_events_processor',
                 "django.template.context_processors.tz",
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.i18n',
@@ -140,7 +140,6 @@ INSTALLED_APPS = (
     'mptt',
     'tagging',
     'zinnia',
-    'django_pygments',
 
     "mezzanine.boot",
     "mezzanine.conf",
