@@ -282,8 +282,8 @@ BLOG_SLUG = '/blog/'
 
 
 # THEME
-
-JQUERY_FILENAME = 'jquery.js'
+# костыль года
+JQUERY_FILENAME = '../../jquery/dist/jquery.min.js'
 
 #####################
 # PAGEDOWN SETTINGS #
