@@ -30,7 +30,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(ROOT_PATH, 'static'),
-    os.path.join(ROOT_PATH, 'apps', 'theme', 'static'),
     os.path.join(ROOT_PATH, 'apps', 'blog_theme', 'static'),
 )
 
@@ -120,7 +119,6 @@ INSTALLED_APPS = (
     # 'suit',
 
     'apps.blog_theme',
-    # 'apps.theme',
     "mezzanine_pagedown",
     'django.contrib.auth',
     'django.contrib.contenttypes',

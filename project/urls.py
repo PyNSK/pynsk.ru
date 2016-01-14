@@ -5,9 +5,10 @@ from django.conf.urls import patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.core.urlresolvers import reverse
+from django.views.generic import RedirectView
 from django.views.i18n import set_language
 from mezzanine.conf import settings
-from mezzanine.core.views import direct_to_template
 
 admin.autodiscover()
 
@@ -36,6 +37,7 @@ if settings.USE_MODELTRANSLATION:
 urlpatterns += [
 
     # url("^blog/$", direct_to_template, {"template": "index.html"}, name="home"),
+    url(r'^$', RedirectView.as_view(url=reverse('tasks:index')), name='home'),
     url("", include("mezzanine.urls")),
 ]
 

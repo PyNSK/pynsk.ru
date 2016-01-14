@@ -35,29 +35,20 @@
 {% block container_class %}container-fluid{% endblock container_class %}
 {% block body %}
 
-    <div class="col-md-8 middle panel">
+    <div class="col-md-9 middle panel">
         {% block main %}{% endblock %}
     </div>
 
-    <div class="col-md-4 right">
+    <div class="col-md-3 right">
         {% nevercache %}
             {% include "includes/language_selector.html" %}
             {% include "includes/user_panel.html" %}
         {% endnevercache %}
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {% block right_panel %}
 
-                    {% ifinstalled mezzanine.twitter %}
-                        {% include "twitter/tweets.html" %}
-                    {% endifinstalled %}
+        {% block right_panel %}
 
+        {% endblock %}
 
-
-
-                {% endblock %}
-            </div>
-        </div>
     </div>
 
 {% endblock body %}
