@@ -1,34 +1,63 @@
 {% load daily_tags %}
+{% load static %}
+{% load %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Дневной дайджест за {{ date|date:"d.m.Y" }}</title>
+
+
 </head>
 <body>
 
-<p>#python #pynsk #pythondaily #pydaily</p>
-<p>Дневной дайджест: {{ date|date:"d.m.Y" }}</p>
-{{ initial_text|safe }}
 
-{% for category, links in items.items %}
-    {% if links %}
-        <div class="items-group-container">
+<button id="create_digest">Опубликовать</button>
+
+<div id="digest_content">
+    <p>#python #pynsk #pythondaily #pydaily</p>
+    <p>Дневной дайджест: {{ date|date:"d.m.Y" }}</p>
+    {{ initial_text|safe }}
+
+    {% for category, links in items.items %}
+        {% if links %}
             <br/>
-            <p>{{ category }} <br/> {% crete_hr_line category %}</p>
+            <p>{{ category }} </p>
+            <p>{% crete_hr_line category %}</p>
 
             {% for item in links %}
-                <div class="item-container">
-                    <p>- {{ item.title }} {{ item.link }}</p>
-                </div>
+
+                <p>- {{ item.title }} {{ item.link }}</p>
+
             {% endfor %}
-        </div>
-    {% endif %}
-{% endfor %}
+
+        {% endif %}
+    {% endfor %}
+
+    <br/>
+    <p>Добавляйте интересные Python-ссылки через форму: http://pythondigest.ru/add/</p>
+    #daily@pynsk
+</div>
 
 
-<br/>
-<p>Добавляйте интересные Python-ссылки через форму: http://pythondigest.ru/add/</p>
-#daily@pynsk
+<script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+
+
+<script>
+    $('#create_digest').click(function () {
+        $.ajax({
+            method: 'GET',
+            url: "{% url 'dailydigest:create' %}",
+            data: {
+                'content': $('#digest_content').html(),
+                'title': "Дневной дайджест: {{ date|date:"d.m.Y" }}",
+                'date': '{{ date|date:"d.m.Y" }}'
+            }
+        }).done(function (data) {
+            console.log(data)
+        });
+    })
+</script>
+
 </body>
 </html>

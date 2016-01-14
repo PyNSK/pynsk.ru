@@ -4,9 +4,10 @@ import itertools
 import random
 
 import requests
+from django.http import HttpResponse
 from django.shortcuts import render
 
-from apps.dailydigest.models import InitialText
+from apps.dailydigest.models import InitialText, DailyIssue
 
 
 def get_initial_text():
@@ -74,3 +75,16 @@ def daily_now(request):
     now = datetime.datetime.now()
     now -= datetime.timedelta(days=1)
     return base_daily(request, now)
+
+
+def daily_create(request):
+    if request.method == 'GET':
+        DailyIssue(
+                title=request.GET.get('title'),
+                description=request.GET.get('content'),
+                status='active',
+                published_at=datetime.datetime.strptime(request.GET.get('date'), '%d.%m.%Y'),
+        ).save()
+        return HttpResponse('Ok')
+    else:
+        return HttpResponse('Error')
