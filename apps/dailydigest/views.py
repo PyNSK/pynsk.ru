@@ -9,8 +9,6 @@ def switch_section(old_name):
         'Интересные проекты, инструменты, библиотеки': 'Библиотеки',
         'Новости': "Главные новости",
         'Конференции, события, встречи разработчиков': 'Встречи разработчиков',
-        'Статьи': 'Статьи для прочтения за кружкой чая',
-        'Видео': 'Видео достойные просмотра',
     }.get(old_name, old_name)
 
 
@@ -27,7 +25,24 @@ def base_daily(request, date):
 
     for item in items:
         item['section'] = switch_section(item['section__title'])
-    return render(request, 'daily.html', {'items': items, 'date': date})
+
+    result = {
+        switch_section('Интересные проекты, инструменты, библиотеки'): [],
+        switch_section('Новости'): [],
+        switch_section('Конференции, события, встречи разработчиков'): [],
+        switch_section('Статьи'): [],
+        switch_section('Видео'): [],
+
+    }
+    for item in items:
+        item['section'] = switch_section(item['section__title'])
+        if item['section'] not in result:
+            result[item['section']] = []
+        result[item['section']].append(item)
+
+        del item['section__title']
+
+    return render(request, 'daily.html', {'items': result, 'date': date})
 
 
 def daily(request, year, month, day):
