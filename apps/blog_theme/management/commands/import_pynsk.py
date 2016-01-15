@@ -68,13 +68,11 @@ def parse():
                     content=text,
             )
 
-            if created:
+            for tag in tags:
+                keyword, _ = Keyword.objects.get_or_create(title=tag)
+                post.keywords.add(AssignedKeyword(keyword=keyword))
 
-                for tag in tags:
-                    keyword, _ = Keyword.objects.get_or_create(title=tag)
-                    post.keywords.add(AssignedKeyword(keyword=keyword))
-
-                post.categories.add(BlogCategory.objects.get(title=category))
+            post.categories.add(BlogCategory.objects.get(title=category))
 
 
 class Command(BaseCommand):
