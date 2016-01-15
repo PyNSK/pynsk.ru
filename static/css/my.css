@@ -163,3 +163,8 @@
         line-height: 1.8;
     }
 }
+
+
+a, a:hover, a:focus {
+    color: inherit;
+}
