@@ -2,32 +2,28 @@
 
 <div class="well well-sm">
     <div class="row">
-        <div class="col-md-3 left">
+        <div class="col-md-4 left">
             <header class="entry-header">
 
                 <h3 class="entry-title" itemprop="headline"> PyNSK</h3>
                 <h4> проект про Python</h4>
+                <div class="entry-content">
+                    <p>
+                        <a href="{% url 'tasks:index' %}">Задачи</a>,
+                        <a href="/blog">Статьи</a>,
+                        <a href="http://pythondigest/">Недельный Python Дайджест</a>,
+                        FAQ,
+                        Курсы по Python,
+                        Видео-уроки,
+                        Скринкасты
+                    </p>
 
+                </div>
             </header>
 
         </div>
 
-        <div class="col-md-3 middle">
-            <div class="entry-content">
-                <p>
-                    <a href="{% url 'tasks:index' %}">Задачи</a>,
-                    <a href="/blog">Статьи</a>,
-                    <a href="http://pythondigest/">Недельный Python Дайджест</a>,
-                    FAQ,
-                    Курсы по Python,
-                    Видео-уроки,
-                    Скринкасты
-                </p>
-
-            </div>
-        </div>
-
-        <div class="col-md-4 middle">
+        <div class="col-md-6 middle">
             <div class="entry-content">
                 <h4 style="text-align: center">Поддержите некоммерческий проект</h4>
                 <iframe frameborder="0" allowtransparency="true" scrolling="no"
@@ -39,7 +35,7 @@
 
         <div class="col-md-2 right">
             <div class="pull-right">
-                <img src="{% static 'images/pynsk_logo.png' %}" style="max-height: 100px">
+                <img src="{% static 'images/pynsk_logo.png' %}" style="max-height: 198px">
             </div>
         </div>
     </div>
