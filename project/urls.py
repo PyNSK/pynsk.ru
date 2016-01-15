@@ -10,6 +10,8 @@ from django.views.generic import RedirectView
 from django.views.i18n import set_language
 from mezzanine.conf import settings
 
+from apps.frontend.views import ThanksPage
+
 admin.autodiscover()
 
 urlpatterns = patterns(
@@ -20,6 +22,8 @@ urlpatterns = patterns(
         url(r'^humans.txt$', 'django.views.static.serve',
             {'document_root': dj_settings.ROOT_PATH, 'path': 'AUTHORS.txt'}),
         url(r'^admin/', include(admin.site.urls)),
+
+        url(r'^thanks/', ThanksPage.as_view(), name='thanks'),
 
         url(r'', include('apps.tasks.urls', namespace='tasks')),
         url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),

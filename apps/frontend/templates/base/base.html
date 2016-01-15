@@ -75,11 +75,13 @@
 
 <main class="content">
 
-    <div class="container">
-        <div class="row">
-            {% include 'blocks/nav_block.html' %}
+    {% block nav_block %}
+        <div class="container">
+            <div class="row">
+                {% include 'blocks/nav_block.html' %}
+            </div>
         </div>
-    </div>
+    {% endblock nav_block %}
 
 
     <div class="{% block container_class %}container{% endblock container_class %}">
