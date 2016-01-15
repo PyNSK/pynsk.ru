@@ -40,7 +40,7 @@ def parse():
         except LanguageDetectionError as e:
             print(e, x)
 
-    for x in _files[:5]:
+    for x in _files:
         with open(x, 'r') as fio:
             head = [next(fio) for _ in range(4)]
 
