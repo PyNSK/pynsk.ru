@@ -2,6 +2,7 @@
 import os
 
 from django import VERSION as DJANGO_VERSION
+from pyembed.markdown import PyEmbedMarkdown
 
 ROOT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -21,7 +22,7 @@ LANGUAGE_CODE = 'ru-ru'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-USE_TZ = True
+USE_TZ = False
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
 MEDIA_URL = '/media/'
@@ -277,7 +278,7 @@ SITE_PREFIX = '/blog'
 BLOG_SLUG = 'blog/'
 # PAGES_SLUG = '/pages/'
 # APPEND_SLASH = True
-BLOG_URLS_USE_DATE = True
+BLOG_URLS_DATE_FORMAT = 'day'
 
 # THEME
 # костыль года
@@ -289,9 +290,9 @@ JQUERY_FILENAME = '../../jquery/dist/jquery.min.js'
 RICHTEXT_WIDGET_CLASS = 'mezzanine_pagedown.widgets.PageDownWidget'
 RICHTEXT_FILTER = 'mezzanine_pagedown.filters.custom'
 RICHTEXT_FILTERS = (RICHTEXT_FILTER,)
-PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra', 'codehilite', 'toc')
+PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra', 'codehilite', 'toc', PyEmbedMarkdown())
 RICHTEXT_FILTER_LEVEL = 3
-PAGEDOWN_SERVER_SIDE_PREVIEW = True
+PAGEDOWN_SERVER_SIDE_PREVIEW = False
 
 try:
     from mezzanine.utils.conf import set_dynamic_settings

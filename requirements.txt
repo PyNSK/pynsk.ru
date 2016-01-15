@@ -51,3 +51,5 @@ django-compressor
 mezzanine
 mezzanine-pagedown
 python-memcached
+transliterate
+pyembed-markdown
