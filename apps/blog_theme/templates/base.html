@@ -13,6 +13,7 @@
 {% block head_css %}
 
     <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+{#    <link rel="stylesheet" href="{% static "mezzanine_pagedown/css/pagedown.css" %}">#}
 
     {% if LANGUAGE_BIDI %}
         <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
@@ -23,12 +24,24 @@
             <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
         {% endif %}
     {% endifinstalled %}
+
 {% endblock %}
 
 {% block head_js %}
     <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static "js/bootstrap-extras.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap-extras.js" %}"></script>
+
+
+{##}
+{#    <script type="text/javascript" src="{% static "jquery-ui/jquery-ui.min.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "mezzanine_pagedown/pagedown/Markdown.Converter.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "mezzanine_pagedown/pagedown/Markdown.Sanitizer.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "mezzanine_pagedown/pagedown/Markdown.Editor.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "filebrowser/js/filebrowser-popup.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "mezzanine_pagedown/js/jquery.ba-throttle-debounce.min.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "mezzanine_pagedown/js/jquery.cookie.js" %}"></script>#}
+
 {% endblock head_js %}
 
 

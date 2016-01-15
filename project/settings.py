@@ -229,7 +229,7 @@ BOWER_INSTALLED_APPS = (
     'bootstrap#3.3.6',
     'bootstrap-material-design',
     'underscore',
-    'font-awesome'
+    'font-awesome',
 )
 
 if DJANGO_VERSION < (1, 9):
@@ -277,7 +277,7 @@ SITE_PREFIX = '/blog'
 BLOG_SLUG = 'blog/'
 # PAGES_SLUG = '/pages/'
 # APPEND_SLASH = True
-
+BLOG_URLS_USE_DATE = True
 
 # THEME
 # костыль года
