@@ -72,7 +72,7 @@ def parse():
                 keyword, _ = Keyword.objects.get_or_create(title=tag)
                 post.keywords.add(AssignedKeyword(keyword=keyword))
 
-            post.categories.add(BlogCategory.objects.get_or_create(title=category))
+            post.categories.add(BlogCategory.objects.get_or_create(title=category)[0])
 
 
 class Command(BaseCommand):
