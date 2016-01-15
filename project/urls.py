@@ -21,12 +21,9 @@ urlpatterns = patterns(
             {'document_root': dj_settings.ROOT_PATH, 'path': 'AUTHORS.txt'}),
         url(r'^admin/', include(admin.site.urls)),
 
-        # url(r'gnfdgdsf', include('apps.meetup.urls', namespace='meetup')),
-        url(r'hgfhfdghfghf', include('apps.frontend.urls', namespace='frontend')),
         url(r'', include('apps.tasks.urls', namespace='tasks')),
         url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
 
-        # url(r'^comments/', include('django_comments.urls')),
 )
 
 if settings.USE_MODELTRANSLATION:
