@@ -40,7 +40,7 @@ def parse():
         except LanguageDetectionError as e:
             print(e, x)
 
-    for x in _files:
+    for x in _files[:5]:
         with open(x, 'r') as fio:
             head = [next(fio) for _ in range(4)]
 
@@ -48,11 +48,9 @@ def parse():
             while not space:
                 space = next(fio)
 
-            category = head[3].replace('Category: ', '').strip()
             raw_title = head[0].replace('Title: ', '').strip()
 
             slug = slugify(raw_title)
-
 
             date = datetime.datetime.strptime(
                     head[1].replace('Date: ', '').strip(), "%Y-%m-%d %H:%M")
@@ -70,7 +68,7 @@ def parse():
                     content=text,
             )
 
-            if not created:
+            if created:
 
                 for tag in tags:
                     keyword, _ = Keyword.objects.get_or_create(title=tag)
