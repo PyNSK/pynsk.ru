@@ -31,15 +31,15 @@
             <ul class="nav navbar-nav navbar-right">
                 {#                {% menu_element index_page 'Главная' %}#}
                 {% menu_element tasks_page 'Все задачи' %}
-                {% menu_element 'http://pynsk.ru' 'К статьям' %}
 
+                {% menu_element '/blog/' 'Блог' %}
+                {% menu_element 'http://pynsk.ru' 'Старый сайт' %}
 
                 {#                {% menu_element articles_page 'Контент' %}#}
                 {#                {% menu_element events_page 'Встречи' %}#}
                 {#                {% menu_element about_page 'О сайте' %}#}
 
                 {% if request.user.is_staff %}
-                    {% menu_element '/blog/' 'Блог' %}
                     {% menu_element daily_now 'Дайджест' %}
                     {% menu_element admin_page 'Админка' %}
                 {% endif %}
