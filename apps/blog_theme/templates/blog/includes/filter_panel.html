@@ -38,7 +38,7 @@
             <div class="panel-body">
                 {% for tag in tags %}
                     <a href="{% url "blog_post_list_tag" tag.slug %}"
-                       class="tag-weight-{{ tag.weight }}">{{ tag }}</a>
+                       class="tag-weight-{{ tag.weight }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
             </div>
         </div>

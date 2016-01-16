@@ -170,3 +170,7 @@ a, a:hover, a:focus {
     color: #3f51b5;
     font-weight: 400;
 }
+
+.tag-weight-1 {
+  font-size: 70%;
+}
