@@ -294,6 +294,19 @@ PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra', 'codehilite', 'toc')
 RICHTEXT_FILTER_LEVEL = 3
 PAGEDOWN_SERVER_SIDE_PREVIEW = False
 
+VK_APP_ID = 0
+VK_USER_LOGIN = ''
+VK_USER_PASSWORD = ''
+
+if DEBUG:
+    VK_PYNSK_GROUP_ID = '-105509411'
+    VK_PYTHON_PROGRAMMING_ID = '-112009303'
+else:
+    VK_PYNSK_GROUP_ID = '-96469126'
+    VK_PYTHON_PROGRAMMING_ID = '-38080744'
+
+
+
 try:
     from mezzanine.utils.conf import set_dynamic_settings
 except ImportError:

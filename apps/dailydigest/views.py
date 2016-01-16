@@ -2,8 +2,11 @@ import bisect
 import datetime
 import itertools
 import random
+import time
 
 import requests
+import vk
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -77,8 +80,43 @@ def daily_now(request):
     return base_daily(request, now)
 
 
+def post_to_wall(api, owner_id, message, **kwargs):
+    data_dict = {
+        'from_group': 1,
+        'owner_id': owner_id,
+        'message': message,
+    }
+    data_dict.update(**kwargs)
+    return api.wall.post(**data_dict)
+
+
+def publish_to_vk(content):
+    app_id = settings.VK_APP_ID
+
+    user_login = settings.VK_USER_LOGIN
+    user_password = settings.VK_USER_PASSWORD
+    session = vk.AuthSession(
+            app_id=app_id,
+            user_login=user_login,
+            user_password=user_password,
+            scope=','.join(['offline', 'wall'])
+    )
+    api = vk.API(session)
+
+    group_id = settings.VK_PYNSK_GROUP_ID
+    group_to_id = settings.VK_PYTHON_PROGRAMMING_ID
+    result = post_to_wall(api, group_id, content)
+    if 'post_id' in result:
+        time.sleep(1)
+        api.wall.repost(
+                object='wall{}_{}'.format(group_id, result['post_id']),
+                group_id=abs(int(group_to_id)),
+        )
+
+
 def daily_create(request):
     if request.method == 'GET':
+        publish_to_vk(request.GET.get('content'))
         DailyIssue(
                 title=request.GET.get('title'),
                 description=request.GET.get('content'),
