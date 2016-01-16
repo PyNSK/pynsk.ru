@@ -14,30 +14,21 @@
 
 <button id="create_digest">Опубликовать</button>
 
-<div id="digest_content">
-    <p>#python #pynsk #pythondaily #pydaily</p>
-    <p>Дневной дайджест: {{ date|date:"d.m.Y" }}</p>
-    {{ initial_text|safe }}
 
-    {% for category, links in items.items %}
-        {% if links %}
-            <br/>
-            <p>{{ category }} </p>
-            <p>{% crete_hr_line category %}</p>
+<pre id="digest_content">
+{% spaceless %}#python #pynsk #pythondaily #pydaily
+Дневной дайджест: {{ date|date:"d.m.Y" }}
+{{ initial_text }}
+{% for category, links in items.items %}{% if links %}
+{{ category }}
+{% crete_hr_line category %}
+{% for item in links %}
+- {{ item.title }} {{ item.link }}
+{% endfor %}{% endif %}{% endfor %}
 
-            {% for item in links %}
-
-                <p>- {{ item.title }} {{ item.link }}</p>
-
-            {% endfor %}
-
-        {% endif %}
-    {% endfor %}
-
-    <br/>
-    <p>Добавляйте интересные Python-ссылки через форму: http://pythondigest.ru/add/</p>
-    #daily@pynsk
-</div>
+Добавляйте интересные Python-ссылки через форму: http://pythondigest.ru/add/
+#daily@pynsk{% endspaceless %}
+</pre>
 
 
 <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
@@ -45,11 +36,12 @@
 
 <script>
     $('#create_digest').click(function () {
+
         $.ajax({
             method: 'GET',
             url: "{% url 'dailydigest:create' %}",
             data: {
-                'content': $('#digest_content').html(),
+                'content': document.getElementById("digest_content").innerText,
                 'title': "Дневной дайджест: {{ date|date:"d.m.Y" }}",
                 'date': '{{ date|date:"d.m.Y" }}'
             }
