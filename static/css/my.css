@@ -174,3 +174,8 @@ a, a:hover, a:focus {
 .tag-weight-1 {
   font-size: 70%;
 }
+
+body {
+  padding-top: inherit;
+  line-height: inherit;
+}
