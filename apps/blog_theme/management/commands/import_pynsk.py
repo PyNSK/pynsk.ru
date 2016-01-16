@@ -11,9 +11,7 @@ from transliterate import slugify, translit
 from transliterate.exceptions import LanguageDetectionError
 
 
-def parse():
-    folder = '/home/warmonger/Develop/Groups/PyNSK/pynsk/content/article/'
-
+def parse(folder: str):
     _files = []
     for dir, _, files in os.walk(folder):
         _files.extend([os.path.join(dir, x) for x in files if x and x.endswith('.md')])
@@ -76,5 +74,12 @@ def parse():
 
 
 class Command(BaseCommand):
+    def add_arguments(self, parser):
+        parser.add_argument('folder', type=str)
+
     def handle(self, *args, **options):
-        parse()
+        # '/home/warmonger/Develop/Groups/PyNSK/pynsk/content/article/'
+        if 'folder' in options:
+            parse(options['folder'])
+        else:
+            print('Not found folder path')
