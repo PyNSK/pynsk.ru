@@ -98,8 +98,8 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
     "mezzanine.core.middleware.SitePermissionMiddleware",
     # Uncomment the following if using any of the SSL settings:
-    # "mezzanine.core.middleware.SSLRedirectMiddleware",
-    # "mezzanine.pages.middleware.PageMiddleware",
+    "mezzanine.core.middleware.SSLRedirectMiddleware",
+    "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 
 )
@@ -297,6 +297,7 @@ PAGEDOWN_SERVER_SIDE_PREVIEW = False
 VK_APP_ID = 0
 VK_USER_LOGIN = ''
 VK_USER_PASSWORD = ''
+
 
 if DEBUG:
     VK_PYNSK_GROUP_ID = '-105509411'
