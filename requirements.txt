@@ -3,14 +3,14 @@ Pillow==2.7.0
 django-model-utils==2.2
 django-picklefield==0.3.1
 # fork for deepcopy workaround
--e git+https://github.com/coagulant/embedly-python@raw_data#egg=embedly
+#-e git+https://github.com/coagulant/embedly-python@raw_data#egg=embedly
 pytils==0.3
--e git+https://github.com/coagulant/django-storages-py3@bf64ba562c06fb366a84e73e7a258d54627bd172#egg=storages
+#-e git+https://github.com/coagulant/django-storages-py3@bf64ba562c06fb366a84e73e7a258d54627bd172#egg=storages
 docutils==0.11
 requests==2.6
 Markdown==2.4.1
 django-suit==0.2.8
--e git+https://github.com/mvasilkov/django-google-charts#egg=django-google-charts
+#-e git+https://github.com/mvasilkov/django-google-charts#egg=django-google-charts
 arrow==0.4.2
 python-dateutil==2.2
 xmltodict==0.9.0
@@ -32,7 +32,7 @@ responses==0.3.0
 httpretty==0.8.0
 django-debug-toolbar==1.4
 coveralls>=1.0a1
--e git+https://github.com/bitly/bitly-api-python@8f51e7775938238398da4c8cb619dd3609c76f3d#egg=bitly_api-master
+#-e git+https://github.com/bitly/bitly-api-python@8f51e7775938238398da4c8cb619dd3609c76f3d#egg=bitly_api-master
 
 # heroku
 psycopg2==2.5.3
@@ -41,15 +41,16 @@ dj-database-url==0.3.0
 
 # articles
 
-django-blog-zinnia
+django-blog-zinnia==0.15.2
 django-bower==5.0.4
 Pygments==2.0.2
 
 
-django-extensions
-django-compressor
-mezzanine
-mezzanine-pagedown
-python-memcached
-transliterate
-pyembed-markdown
+django-extensions==1.6.1
+django-compressor==2.0
+mezzanine==4.0.1
+mezzanine-pagedown==0.9
+python-memcached==1.57
+transliterate==1.7.5
+pyembed-markdown==1.1.0
+vk==2.0.2
