@@ -15,7 +15,7 @@
         <a href="{% url 'tasks:task-detail' pk=object.pk %}"
            title="Теги задачи: {{ object.tags_list|join:', ' }}">
             <div class="col-xs-12 col-md-4">
-                <div class="card label-{{ css_cards|random }}">
+                <div class="card">
                     <div class="card-image">
                         <img class="img-responsive"
                              src="{% static 'images/task_card_backgroud.png' %}">
