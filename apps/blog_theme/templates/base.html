@@ -45,14 +45,20 @@
 {% endblock head_js %}
 
 
+
 {#{% block container_class %}container-fluid{% endblock container_class %}#}
 {% block body %}
 
     <div class="col-md-9 middle panel">
+
         {% block main %}{% endblock %}
     </div>
 
     <div class="col-md-3 right">
+
+
+        {% search_form %}
+
         {% block right_panel %}
 
         {% endblock %}
