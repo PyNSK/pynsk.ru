@@ -19,7 +19,6 @@
             panels.push(active);
 
         localStorage.panels = JSON.stringify(panels);
-        console.log('Shown', localStorage.panels)
     });
 
     $(".panel .panel-collapse").on('hidden.bs.collapse', function () {
@@ -31,12 +30,10 @@
             panels.splice(elementIndex, 1); //remove item from array
         }
         localStorage.panels = JSON.stringify(panels); //save array on localStorage
-        console.log('Hidden', localStorage.panels)
     });
 
     var panels = localStorage.panels === undefined ? new Array() : JSON.parse(localStorage.panels); //get all panels
 
-    console.log(panels);
     for (var i in panels) { //<-- panel is the name of the cookie
         if ($("#" + panels[i]).hasClass('panel-collapse')) // check if this is a panel
         {
