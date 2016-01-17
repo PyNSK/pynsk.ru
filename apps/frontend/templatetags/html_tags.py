@@ -4,6 +4,7 @@ import re
 
 import pygments
 from django import template
+from django.core.urlresolvers import reverse
 from pygments.formatters.html import HtmlFormatter
 from pygments.lexers.python import PythonLexer
 
@@ -18,6 +19,27 @@ def title_element():
 @register.assignment_tag
 def bts_card_css():
     return ['info', 'primary', 'success', 'warning', 'danger']
+
+
+@register.assignment_tag
+def projects():
+    return [
+        {
+            'title': 'Статьи',
+            'description': 'Мы пишем много текстового контента',
+            'url': '/blog',
+        },
+        {
+            'title': 'Недельный Python Дайджест',
+            'description': 'Собираем актуальные новости из мира Python',
+            'url': 'http://pythondigest.ru',
+        },
+        {
+            'title': 'Задачи',
+            'description': 'Как же практика без теории? У нас свой сборник задач',
+            'url': reverse('tasks:index'),
+        },
+    ]
 
 
 regex = re.compile(r'<code>(.*?)</code>', re.DOTALL)

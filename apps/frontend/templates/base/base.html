@@ -25,7 +25,8 @@
 
         <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css' %}">
+        <link rel="stylesheet"
+              href="{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css' %}">
         <link rel="stylesheet" href="{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -76,22 +77,24 @@
 
 <main class="content">
 
-    {% block nav_block %}
-        <div class="container">
+    {% block content_tag %}
+        {% block nav_block %}
+            <div class="container">
+                <div class="row">
+                    {% include 'blocks/nav_block.html' %}
+                </div>
+            </div>
+        {% endblock nav_block %}
+
+
+        <div class="{% block container_class %}container{% endblock container_class %}">
             <div class="row">
-                {% include 'blocks/nav_block.html' %}
+                {% block body %}
+
+                {% endblock body %}
             </div>
         </div>
-    {% endblock nav_block %}
-
-
-    <div class="{% block container_class %}container{% endblock container_class %}">
-        <div class="row">
-            {% block body %}
-
-            {% endblock body %}
-        </div>
-    </div>
+    {% endblock content_tag %}
 </main>
 
 
@@ -101,16 +104,16 @@
 
 </footer>
 
-<!--  Necessary scripts  -->
+
 
 {% block footer_js %}
-
     {% include 'blocks/footer_js.html' %}
 {% endblock footer_js %}
 
 {% block extra_footer_js %}
 
 {% endblock extra_footer_js %}
+
 
 </body>
 </html>

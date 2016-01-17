@@ -10,7 +10,7 @@ from django.views.generic import RedirectView
 from django.views.i18n import set_language
 from mezzanine.conf import settings
 
-from apps.frontend.views import ThanksPage
+from apps.frontend.views import ThanksPage, IndexPage
 
 admin.autodiscover()
 
@@ -25,8 +25,9 @@ urlpatterns = patterns(
 
         url(r'^thanks/', ThanksPage.as_view(), name='thanks'),
 
-        url(r'', include('apps.tasks.urls', namespace='tasks')),
+        url(r'tasks', include('apps.tasks.urls', namespace='tasks')),
         url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
+        url(r'^$', IndexPage.as_view(), name="home"),
 
 )
 
@@ -37,8 +38,7 @@ if settings.USE_MODELTRANSLATION:
 
 urlpatterns += [
 
-    # url("^blog/$", direct_to_template, {"template": "index.html"}, name="home"),
-    url(r'^$', RedirectView.as_view(url=reverse('tasks:index')), name='home'),
+    # url(r'^$', RedirectView.as_view(url=reverse('tasks:index')), name='home'),
     url("", include("mezzanine.urls")),
 ]
 

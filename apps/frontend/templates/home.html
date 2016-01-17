@@ -1,27 +1,28 @@
 {% extends 'base/base.html' %}
 {% load html_tags %}
-{% load staticfiles %}
+{% load static %}
+{% block meta_title %}Главная{% endblock %}
 
-{% block meta_title %}Задачи{% endblock %}
+{% block nav_block %}
+{% endblock %}
+
 
 {% block body %}
 
-    <h1 class="text-center">Практические задачи</h1>
-    <hr>
-    {% bts_card_css as  css_cards %}
+    <h1 class="text-center">Привет! Ты на Python-портале</h1>
 
-    {% for object in object_list %}
+    <h3 class="text-center">Наш контент</h3>
 
-        <a href="{% url 'tasks:task-detail' pk=object.pk %}"
-           title="Теги задачи: {{ object.tags_list|join:', ' }}">
+    {% projects as  projects %}
+    {% for object in projects %}
+        <a href="{{ object.url }}"
+           title="{{ object.description }}">
             <div class="col-xs-12 col-md-4">
                 <div class="card">
                     <div class="card-image">
                         <img class="img-responsive"
                              src="{% static 'images/task_card_backgroud.png' %}">
-                        <span class="card-title">Задача {{ object.number|stringformat:"03d" }}</span>
                     </div>
-
                     <div class="card-content">
                         <p>{{ object.title }}</p>
                     </div>
@@ -29,11 +30,6 @@
             </div>
         </a>
 
-
-    {% empty %}
-        <h4>Еще нет задач</h4>
     {% endfor %}
 
-
-
-{% endblock body %}
+{% endblock %}
