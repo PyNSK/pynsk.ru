@@ -10,6 +10,7 @@
     <hr>
     {% bts_card_css as  css_cards %}
 
+
     {% for object in object_list %}
 
         <a href="{% url 'tasks:task-detail' pk=object.pk %}"
