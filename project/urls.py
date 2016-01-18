@@ -25,7 +25,7 @@ urlpatterns = patterns(
 
         url(r'^thanks/', ThanksPage.as_view(), name='thanks'),
 
-        url(r'tasks', include('apps.tasks.urls', namespace='tasks')),
+        url(r'^tasks/', include('apps.tasks.urls', namespace='tasks')),
         url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
         url(r'^$', IndexPage.as_view(), name="home"),
 
