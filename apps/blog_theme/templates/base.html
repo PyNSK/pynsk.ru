@@ -28,9 +28,6 @@
 {% endblock %}
 
 {% block head_js %}
-    <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrap-extras.js" %}"></script>
 
 
     {##}
@@ -49,7 +46,7 @@
 {#{% block container_class %}container-fluid{% endblock container_class %}#}
 {% block body %}
 
-    <div class="col-md-9 middle panel">
+    <div class="col-md-9 middle">
 
         {% block main %}{% endblock %}
     </div>
@@ -66,169 +63,3 @@
     </div>
 
 {% endblock body %}
-{##}
-{##}
-
-{#{% block container %}#}
-{##}
-{##}
-{##}
-{#    <div class="col-md-8">#}
-{##}
-{#        <div class="cards-list well">#}
-{#            <!-- Projects Row -->#}
-{#            <div class="row">#}
-{##}
-{##}
-{#                <div class="col-md-6 portfolio-item">#}
-{#                    <a href="#">#}
-{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
-{#                    </a>#}
-{#                    <h3>#}
-{#                        <a href="#">Project Name</a>#}
-{#                    </h3>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
-{#                        pellentesque#}
-{#                        urna varius vitae.</p>#}
-{#                </div>#}
-{#                <div class="col-md-6 portfolio-item">#}
-{#                    <a href="#">#}
-{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
-{#                    </a>#}
-{#                    <h3>#}
-{#                        <a href="#">Project Name</a>#}
-{#                    </h3>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
-{#                        pellentesque#}
-{#                        urna varius vitae.</p>#}
-{#                </div>#}
-{##}
-{#            </div>#}
-{#            <!-- /.row -->#}
-{##}
-{#            <!-- Projects Row -->#}
-{#            <div class="row">#}
-{#                <div class="col-md-6 portfolio-item">#}
-{#                    <a href="#">#}
-{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
-{#                    </a>#}
-{#                    <h3>#}
-{#                        <a href="#">Project Name</a>#}
-{#                    </h3>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
-{#                        pellentesque#}
-{#                        urna varius vitae.</p>#}
-{#                </div>#}
-{#                <div class="col-md-6 portfolio-item">#}
-{#                    <a href="#">#}
-{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
-{#                    </a>#}
-{#                    <h3>#}
-{#                        <a href="#">Project Name</a>#}
-{#                    </h3>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
-{#                        pellentesque#}
-{#                        urna varius vitae.</p>#}
-{#                </div>#}
-{##}
-{#            </div>#}
-{##}
-{#            <!-- Projects Row -->#}
-{#            <div class="row">#}
-{#                <div class="col-md-6 portfolio-item">#}
-{#                    <a href="#">#}
-{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
-{#                    </a>#}
-{#                    <h3>#}
-{#                        <a href="#">Project Name</a>#}
-{#                    </h3>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
-{#                        pellentesque#}
-{#                        urna varius vitae.</p>#}
-{#                </div>#}
-{#                <div class="col-md-6 portfolio-item">#}
-{#                    <a href="#">#}
-{#                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">#}
-{#                    </a>#}
-{#                    <h3>#}
-{#                        <a href="#">Project Name</a>#}
-{#                    </h3>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida#}
-{#                        pellentesque#}
-{#                        urna varius vitae.</p>#}
-{#                </div>#}
-{##}
-{#            </div>#}
-{#            <!-- /.row -->#}
-{##}
-{##}
-{#            <!-- Pagination -->#}
-{#            <div class="row text-center">#}
-{#                <div class="col-lg-12">#}
-{#                    <ul class="pagination">#}
-{#                        <li>#}
-{#                            <a href="#">&laquo;</a>#}
-{#                        </li>#}
-{#                        <li class="active">#}
-{#                            <a href="#">1</a>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="#">2</a>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="#">3</a>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="#">4</a>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="#">5</a>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="#">&raquo;</a>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </div>#}
-{#            </div>#}
-{#            <!-- /.row -->#}
-{##}
-{##}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#    <div class="col-md-4">#}
-{##}
-{#        <section class="well well-sm">#}
-{#            <ul class="list-group list-group-flush">#}
-{##}
-{#                <li class="list-group-item">#}
-{##}
-{#                    <a href="http://pynsk.ru/">#}
-{#                        <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Категории статей</span></h4>#}
-{#                    </a>#}
-{##}
-{#                    <ul class="list-group" id="categories">#}
-{##}
-{#                        {% for category in categoies %}#}
-{#                        {% endfor %}#}
-{#                        <li class="list-group-item">#}
-{#                            <a href="http://pynsk.ru/category/api-vsemu-golova.html" style="font-size: 14px">#}
-{#                                <i class="fa fa-folder-open fa-lg"></i> API всему голова#}
-{#                            </a>#}
-{#                        </li>#}
-{##}
-{#                    </ul>#}
-{#                </li>#}
-{##}
-{##}
-{#            </ul>#}
-{#        </section>#}
-{##}
-{##}
-{#        <div class="well">#}
-{#            Категории статей#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{##}
-{#{% endblock container %}#}
