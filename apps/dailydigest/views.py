@@ -106,13 +106,16 @@ def publish_to_vk(content):
 
     group_id = settings.VK_PYNSK_GROUP_ID
     group_to_id = settings.VK_PYTHON_PROGRAMMING_ID
-    result = post_to_wall(api, group_id, content)
+    # dat = datetime.datetime.today()
+    # dat.replace(hour=15, minute=0)
+    result = post_to_wall(api, group_id, content, **{'attachments': attachment})
+
     if 'post_id' in result:
         time.sleep(1)
         api.wall.repost(
                 object='wall{}_{}'.format(group_id, result['post_id']),
                 group_id=abs(int(group_to_id)),
-                attachments=attachment,
+
         )
 
 
