@@ -102,6 +102,7 @@ def publish_to_vk(content):
             scope=','.join(['offline', 'wall'])
     )
     api = vk.API(session)
+    attachment = 'photo-96469126_394565103'
 
     group_id = settings.VK_PYNSK_GROUP_ID
     group_to_id = settings.VK_PYTHON_PROGRAMMING_ID
@@ -111,6 +112,7 @@ def publish_to_vk(content):
         api.wall.repost(
                 object='wall{}_{}'.format(group_id, result['post_id']),
                 group_id=abs(int(group_to_id)),
+                attachments=attachment,
         )
 
 
