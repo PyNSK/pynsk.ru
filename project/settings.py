@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'djangobower',
     # 'storages',
     'pytils',
-    'googlecharts',
+    # 'googlecharts',
     'sslserver',
     'django_comments',
     'mptt',
