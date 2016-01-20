@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
 
     'djangobower',
-    'storages',
+    # 'storages',
     'pytils',
     'googlecharts',
     'sslserver',
