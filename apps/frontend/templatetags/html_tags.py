@@ -35,6 +35,11 @@ def projects():
             'url': 'http://pythondigest.ru',
         },
         {
+            'title': 'Дневной Python Дайджест',
+            'description': 'Актуальные новости из мира Python за день',
+            'url': reverse('dailydigest:index'),
+        },
+        {
             'title': 'Задачи',
             'description': 'Как же практика без теории? У нас свой сборник задач',
             'url': reverse('tasks:index'),

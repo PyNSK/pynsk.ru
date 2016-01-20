@@ -46,6 +46,10 @@
     font-weight: inherit;
 }
 
+.nounderline {
+    text-decoration: none
+}
+
 .card .card-content p {
     margin: 0;
     color: inherit;
@@ -77,8 +81,6 @@
     min-height: 100vh;
     flex-direction: column;
 }
-
-
 
 .content {
     flex: 1;

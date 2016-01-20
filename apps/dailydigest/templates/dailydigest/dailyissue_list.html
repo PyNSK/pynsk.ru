@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% load html_tags %}
+{% load staticfiles %}
+
+{% block meta_title %}Дневной дайджест{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="row">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="panel-info text-center">
+                    <a href="{% url 'dailydigest:dailydigest-detail' pk=object_list.first.pk %}" class="nounderline">
+                        <p>Самый свежий выпуск</p>
+                        <h1><strong>{{ object_list.first.title }}</strong></h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center">Выпуски</h1>
+        <hr>
+        {% bts_card_css as  css_cards %}
+
+
+        {% for object in object_list %}
+
+            <a href="{% url 'dailydigest:dailydigest-detail' pk=object.pk %}">
+                <div class="col-xs-12 col-md-4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-responsive"
+                                 src="{% static 'images/task_card_backgroud.png' %}">
+                        </div>
+
+                        <div class="card-content">
+                            <p>{{ object.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+
+        {% empty %}
+            <h4>Еще нет выпусков</h4>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock body %}

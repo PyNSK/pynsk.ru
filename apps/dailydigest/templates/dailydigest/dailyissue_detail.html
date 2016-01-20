@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load html_tags %}
+{% load static %}
+
+{% block meta_title %}{{ object.title }}{% endblock %}
+
+
+{% block body %}
+
+    <div class="well">
+        <header class="entry-header">
+
+            <h1 class="entry-title" itemprop="headline">{{ object.title }}</h1>
+
+        </header>
+        <hr>
+
+        <div class="entry-content">
+            <article id="dailydigest-{{ object.pk }}" style="white-space: pre">{{ object.description|safe|urlize }}</article>
+            <hr/>
+            <div class="row">
+                <div class="col-md-8">
+                    {% include 'blocks/share_social.html' %}
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock body %}

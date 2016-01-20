@@ -9,8 +9,17 @@ import vk
 from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
 from apps.dailydigest.models import InitialText, DailyIssue
+
+
+class DailyDigestIndexPage(ListView):
+    model = DailyIssue
+
+
+class DailyDigestPage(DetailView):
+    model = DailyIssue
 
 
 def get_initial_text():
