@@ -36,7 +36,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {#                {% menu_element index_page 'Главная' %}#}
                 {% menu_element about_page 'О нас' %}
-                {% menu_element search_page 'Поиск' %}
+
                 {% menu_element tasks_page 'Задачи' %}
 
                 {% menu_element '/blog/' 'Статьи' %}
@@ -48,6 +48,7 @@
                 {#                {% menu_element about_page 'О сайте' %}#}
 
                 {% if request.user.is_staff %}
+                    {% menu_element search_page 'Поиск' %}
                     {% menu_element daily_now 'Дайджест' %}
                     {% menu_element admin_page 'Админка' %}
                 {% endif %}
