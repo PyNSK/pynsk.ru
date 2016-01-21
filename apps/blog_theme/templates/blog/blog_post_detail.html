@@ -22,82 +22,80 @@
 {% endblock %}
 
 {% block main %}
-    <section id="blog" class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="blog">
-                    <div class="blog-item">
-                        {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-                            {% block blog_post_list_post_featured_image %}
-                                <a href="{{ blog_post.get_absolute_url }}">
-                                    <img width="100%" class="img-responsive img-blog"
-                                         src="{{ MEDIA_URL }}{{ blog_post.featured_image }}">
-                                </a>
-                            {% endblock %}
-                        {% endif %}
-                        <div class="blog-content">
+    <section id="blog">
+        <div class="col-md-12">
+            <div class="blog">
+                <div class="blog-item">
+                    {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                        {% block blog_post_list_post_featured_image %}
+                            <a href="{{ blog_post.get_absolute_url }}">
+                                <img width="100%" class="img-responsive img-blog"
+                                     src="{{ MEDIA_URL }}{{ blog_post.featured_image }}">
+                            </a>
+                        {% endblock %}
+                    {% endif %}
+                    <div class="blog-content">
 
-                            {% block blog_post_list_post_title %}
+                        {% block blog_post_list_post_title %}
 
-                                <h1>
-                                    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-                                </h1>
-                            {% endblock %}
-
-
-
-                            {% block blog_post_list_post_content %}
-                                {% editable blog_post.content %}
-                                    {{ blog_post.content|richtext_filters|safe }}
-                                {% endeditable %}
-                            {% endblock %}
+                            <h1>
+                                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                            </h1>
+                        {% endblock %}
 
 
 
-                            {% block blog_post_list_post_links %}
+                        {% block blog_post_list_post_content %}
+                            {% editable blog_post.content %}
+                                {{ blog_post.content|richtext_filters|safe }}
+                            {% endeditable %}
+                        {% endblock %}
 
-                                {% keywords_for blog_post as tags %}
-                                <footer class="post-info">
-                                    <span class="label label-default">{% trans "Date" %}</span>
+
+
+                        {% block blog_post_list_post_links %}
+
+                            {% keywords_for blog_post as tags %}
+                            <footer class="post-info">
+                                <span class="label label-default">{% trans "Date" %}</span>
     <span class="published">
         <i class="fa fa-calendar"></i><time> {{ blog_post.publish_date }}</time>
     </span>
 
 
-                                    <span class="label label-default">{% trans "Categories" %}</span>
+                                <span class="label label-default">{% trans "Categories" %}</span>
 
-                                    {% with blog_post.categories.all as categories %}
-                                        {% if categories %}
-                                            {% for category in categories %}
-                                                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>
-                                                {% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    {% endwith %}
-
-
-
-
-                                    <span class="label label-default">{% trans "Tags" %}</span>
-
-                                    {% spaceless %}
-                                        {% for tag in tags %}
-
-                                            <a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>
-                                            {% if not forloop.last %} / {% endif %}
+                                {% with blog_post.categories.all as categories %}
+                                    {% if categories %}
+                                        {% for category in categories %}
+                                            <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>
+                                            {% if not forloop.last %}, {% endif %}
                                         {% endfor %}
-                                    {% endspaceless %}
-
-                                </footer>
-                            {% endblock %}
+                                    {% endif %}
+                                {% endwith %}
 
 
-                            {% block blog_post_detail_comments %}
-                                {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-                            {% endblock %}
 
 
-                        </div>
+                                <span class="label label-default">{% trans "Tags" %}</span>
+
+                                {% spaceless %}
+                                    {% for tag in tags %}
+
+                                        <a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a>
+                                        {% if not forloop.last %} / {% endif %}
+                                    {% endfor %}
+                                {% endspaceless %}
+
+                            </footer>
+                        {% endblock %}
+
+
+                        {% block blog_post_detail_comments %}
+                            {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+                        {% endblock %}
+
+
                     </div>
                 </div>
             </div>

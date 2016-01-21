@@ -1,6 +1,7 @@
 {% load i18n %}
 
 {% if current_page.has_previous or current_page.has_next %}
+<div class="row"><div class="center-block col-md-10" style="float: none">
 <ul class="pagination">
 
 <li class="page-info">
@@ -18,5 +19,5 @@
     <a{% if current_page.has_next %} href="?{{ page_var }}={{ current_page.next_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"{% endif %}>&rarr;</a>
 </li>
 
-</ul>
+</ul></div></div>
 {% endif %}

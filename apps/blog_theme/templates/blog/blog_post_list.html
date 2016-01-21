@@ -42,36 +42,39 @@
 {% endblock %}
 
 {% block main %}
-    {% if tag or category or year or month or author %}
-        {% block blog_post_list_filterinfo %}
-            <h4>
-                {% if tag %}
-                    {% trans "Viewing posts tagged" %} <b>{{ tag }}</b>
-                    {% else %}{% if category %}
-                        {% trans "Viewing posts for the category" %} <b>{{ category }}</b>
-                        {% else %}{% if year or month %}
-                            {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
-                            <b>{{ year }}</b>
-                            {% else %}{% if author %}
-                                {% trans "Viewing posts by" %}
-                                <b>{{ author.get_full_name|default:author.username }}</b>
-                            {% endif %}{% endif %}{% endif %}
-                {% endif %}
-            </h4>
-            <hr>
-        {% endblock %}
 
-    {% else %}
-        {% if page %}
-            {% block blog_post_list_pagecontent %}
-                {% if page.get_content_model.content %}
-                    {% editable page.get_content_model.content %}
-                        {{ page.get_content_model.content|richtext_filters|safe }}
-                    {% endeditable %}
-                {% endif %}
+    <div class="col-md-12 blog">
+
+        {% if tag or category or year or month or author %}
+            {% block blog_post_list_filterinfo %}
+                <h4>
+                    {% if tag %}
+                        {% trans "Viewing posts tagged" %} <b>{{ tag }}</b>
+                        {% else %}{% if category %}
+                            {% trans "Viewing posts for the category" %} <b>{{ category }}</b>
+                            {% else %}{% if year or month %}
+                                {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
+                                <b>{{ year }}</b>
+                                {% else %}{% if author %}
+                                    {% trans "Viewing posts by" %}
+                                    <b>{{ author.get_full_name|default:author.username }}</b>
+                                {% endif %}{% endif %}{% endif %}
+                    {% endif %}
+                </h4>
+                <hr>
             {% endblock %}
+
+        {% else %}
+            {% if page %}
+                {% block blog_post_list_pagecontent %}
+                    {% if page.get_content_model.content %}
+                        {% editable page.get_content_model.content %}
+                            {{ page.get_content_model.content|richtext_filters|safe }}
+                        {% endeditable %}
+                    {% endif %}
+                {% endblock %}
+            {% endif %}
         {% endif %}
-    {% endif %}
 
 
 
@@ -79,42 +82,42 @@
 
 
 
-    {% for blog_post in blog_posts.object_list %}
-        {% block blog_post_list_post_title %}
-            {% editable blog_post.title %}
-                <h1>
-                    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-                </h1>
-            {% endeditable %}
-        {% endblock %}
+        {% for blog_post in blog_posts.object_list %}
+            {% block blog_post_list_post_title %}
+                {% editable blog_post.title %}
+                    <h2>
+                        <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                    </h2>
+                {% endeditable %}
+            {% endblock %}
 
-        {% block blog_post_list_post_content %}
-            {% editable blog_post.content %}
-                <blockquote>
-                    {{ blog_post.description_from_content|safe }}
-                </blockquote>
-            {% endeditable %}
-        {% endblock %}
+            {% block blog_post_list_post_content %}
+                {% editable blog_post.content %}
+                        {{ blog_post.description_from_content|safe }}
+                {% endeditable %}
+            {% endblock %}
 
-        {% block blog_post_list_post_links %}
-            <div class="blog-list-detail">
-                <p align="left">
-                    <a href="{{ blog_post.get_absolute_url }}"
-                       class="btn btn-default btn-raised">{% trans "read more" %}</a>
-                </p>
-            </div>
-        {% endblock %}
-    {% endfor %}
+            {% block blog_post_list_post_links %}
+                <div class="blog-list-detail">
+                    <p align="left">
+                        <a href="{{ blog_post.get_absolute_url }}"
+                           class="btn btn-default btn-raised">{% trans "read more" %}</a>
+                    </p>
+                </div>
+            {% endblock %}
+        {% endfor %}
 
-    {% pagination_for blog_posts %}
+        {% pagination_for blog_posts %}
 
 
 
 
 
-    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-        {% include "generic/includes/disqus_counts.html" %}
-    {% endif %}
+        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+            {% include "generic/includes/disqus_counts.html" %}
+        {% endif %}
+
+    </div>
 
 {% endblock %}
 
