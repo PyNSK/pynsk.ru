@@ -10,6 +10,7 @@
 {% url 'tasks:index' as tasks_page %}
 {% url 'dailydigest:index' as daily_now %}
 {% url 'pages:about' as about_page %}
+{% url 'search' as search_page %}
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -35,6 +36,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {#                {% menu_element index_page 'Главная' %}#}
                 {% menu_element about_page 'О нас' %}
+                {% menu_element search_page 'Поиск' %}
                 {% menu_element tasks_page 'Задачи' %}
 
                 {% menu_element '/blog/' 'Статьи' %}

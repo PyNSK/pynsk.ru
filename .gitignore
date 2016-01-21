@@ -32,3 +32,4 @@ pip-log.txt
 .mr.developer.cfg
 deploy_settings.py
 components
+whoosh_index

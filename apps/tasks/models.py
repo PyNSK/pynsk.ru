@@ -96,6 +96,10 @@ class Task(ContentEntry, ImageEntry, TagsEntry):
         return reverse('tasks:task-detail', kwargs={'pk': self.pk})
 
     @property
+    def get_absolute_url(self):
+        return self.link
+
+    @property
     def rss_content(self):
         return self.html_preview
 

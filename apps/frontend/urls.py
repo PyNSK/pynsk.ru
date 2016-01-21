@@ -10,4 +10,5 @@ urlpatterns = patterns(
         url(r'^thanks$', ThanksPage.as_view(), name='thanks'),
         url(r'^about$', AboutPage.as_view(), name='about'),
 
+
 )

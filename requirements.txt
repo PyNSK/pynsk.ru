@@ -54,3 +54,5 @@ python-memcached==1.57
 transliterate==1.7.5
 pyembed-markdown==1.1.0
 vk==2.0.2
+django-haystack==2.4.1
+whoosh==2.7.0

@@ -5,12 +5,10 @@ from django.conf.urls import patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.core.urlresolvers import reverse
-from django.views.generic import RedirectView
 from django.views.i18n import set_language
 from mezzanine.conf import settings
 
-from apps.frontend.views import ThanksPage, IndexPage
+from apps.frontend.views import IndexPage
 
 admin.autodiscover()
 
@@ -23,11 +21,11 @@ urlpatterns = patterns(
             {'document_root': dj_settings.ROOT_PATH, 'path': 'AUTHORS.txt'}),
         url(r'^admin/', include(admin.site.urls)),
 
-
         url(r'^', include('apps.frontend.urls', namespace='pages')),
         url(r'^tasks/', include('apps.tasks.urls', namespace='tasks')),
         url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
         url(r'^$', IndexPage.as_view(), name="home"),
+        url(r'^search/', include('haystack.urls'), name='search'),
 
 )
 
