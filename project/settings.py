@@ -279,7 +279,7 @@ BLOG_SLUG = 'blog/'
 # PAGES_SLUG = '/pages/'
 # APPEND_SLASH = True
 BLOG_URLS_DATE_FORMAT = 'day'
-
+COMMENTS_DISQUS_SHORTNAME = 'pynsk'
 # THEME
 # костыль года
 JQUERY_FILENAME = '../../jquery/dist/jquery.min.js'
