@@ -1,6 +1,5 @@
 {% load daily_tags %}
 {% load static %}
-{% load %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +15,7 @@
 
 
 <pre id="digest_content">
-{% spaceless %}#python #pynsk #pythondaily #pydaily
-Дневной дайджест: {{ date|date:"d.m.Y" }}
-{{ initial_text }}
-{% for category, links in items.items %}{% if links %}
-{{ category }}
-{% crete_hr_line category %}
-{% for item in links %}
-- {{ item.title }} {{ item.link }}
-{% endfor %}{% endif %}{% endfor %}
-
-Добавляйте интересные Python-ссылки через форму: http://pythondigest.ru/add/
-
-#daily@pynsk{% endspaceless %}
+{% include 'include/dailyissue_content.html' %}
 </pre>
 
 

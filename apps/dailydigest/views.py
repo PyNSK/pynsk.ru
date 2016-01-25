@@ -39,7 +39,7 @@ def switch_section(old_name: str) -> str:
     }.get(old_name, old_name)
 
 
-def base_daily(request, date):
+def get_digest_data(date) -> dict:
     resp = requests.get('http://pythondigest.ru/api/items/{}/{}/{}/'.format(
             date.year,
             date.month,
@@ -69,13 +69,17 @@ def base_daily(request, date):
 
         del item['section__title']
 
+    return {
+        'items': result,
+        'date': date,
+        'initial_text': get_initial_text(),
+    }
+
+
+def base_daily(request, date):
     return render(
             request, 'daily.html',
-            {
-                'items': result,
-                'date': date,
-                'initial_text': get_initial_text(),
-            }
+            get_digest_data(date)
     )
 
 
@@ -129,7 +133,6 @@ def publish_to_vk(content):
         api.wall.repost(
                 object='wall{}_{}'.format(group_id, result['post_id']),
                 group_id=abs(int(group_to_id)),
-
         )
 
 
