@@ -7,8 +7,9 @@ import time
 import requests
 import vk
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 
 from apps.dailydigest.models import InitialText, DailyIssue
@@ -79,14 +80,18 @@ def base_daily(request, date):
 
 
 def daily(request, year, month, day):
-    return base_daily(request, datetime.datetime(
-            year=int(year), month=int(month), day=int(day)))
+    if request.user and request.user.is_superuser:
+        return base_daily(request, datetime.datetime(
+                year=int(year), month=int(month), day=int(day)))
+    return redirect(reverse('dailydigest:index'))
 
 
 def daily_now(request):
-    now = datetime.datetime.now()
-    now -= datetime.timedelta(days=1)
-    return base_daily(request, now)
+    if request.user and request.user.is_superuser:
+        now = datetime.datetime.now()
+        now -= datetime.timedelta(days=1)
+        return base_daily(request, now)
+    return redirect(reverse('dailydigest:index'))
 
 
 def post_to_wall(api, owner_id, message, **kwargs):
