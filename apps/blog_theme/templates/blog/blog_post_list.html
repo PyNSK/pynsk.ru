@@ -83,28 +83,31 @@
 
 
         {% for blog_post in blog_posts.object_list %}
-            {% block blog_post_list_post_title %}
-                {% editable blog_post.title %}
-                    <h2>
-                        <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-                    </h2>
-                {% endeditable %}
-            {% endblock %}
+            {% if blog_post.status == 2 %}
 
-            {% block blog_post_list_post_content %}
-                {% editable blog_post.content %}
+                {% block blog_post_list_post_title %}
+                    {% editable blog_post.title %}
+                        <h2>
+                            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                        </h2>
+                    {% endeditable %}
+                {% endblock %}
+
+                {% block blog_post_list_post_content %}
+                    {% editable blog_post.content %}
                         {{ blog_post.description_from_content|safe }}
-                {% endeditable %}
-            {% endblock %}
+                    {% endeditable %}
+                {% endblock %}
 
-            {% block blog_post_list_post_links %}
-                <div class="blog-list-detail">
-                    <p align="left">
-                        <a href="{{ blog_post.get_absolute_url }}"
-                           class="btn btn-default btn-raised">{% trans "read more" %}</a>
-                    </p>
-                </div>
-            {% endblock %}
+                {% block blog_post_list_post_links %}
+                    <div class="blog-list-detail">
+                        <p align="left">
+                            <a href="{{ blog_post.get_absolute_url }}"
+                               class="btn btn-default btn-raised">{% trans "read more" %}</a>
+                        </p>
+                    </div>
+                {% endblock %}
+            {% endif %}
         {% endfor %}
 
         {% pagination_for blog_posts %}

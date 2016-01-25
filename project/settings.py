@@ -282,6 +282,7 @@ BLOG_SLUG = 'blog/'
 # APPEND_SLASH = True
 BLOG_URLS_DATE_FORMAT = 'day'
 COMMENTS_DISQUS_SHORTNAME = 'pynsk'
+BLOG_POST_PER_PAGE = 10
 # THEME
 # костыль года
 JQUERY_FILENAME = '../../jquery/dist/jquery.min.js'
@@ -302,6 +303,7 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+
 
 VK_APP_ID = 0
 VK_USER_LOGIN = ''
