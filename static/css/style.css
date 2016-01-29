@@ -379,6 +379,10 @@ figure.floatcenter, .align-center {
     margin-right: 10px;
 }
 
+.editable-original img {
+    max-width: 500px;
+}
+
 .tagcloud li {
     padding: 0px;
 }
