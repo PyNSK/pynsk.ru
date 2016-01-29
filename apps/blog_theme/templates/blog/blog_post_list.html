@@ -83,7 +83,12 @@
                 {% block blog_post_list_post_title %}
                     {% editable blog_post.title %}
                         <h2>
-                            <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                            {% if blog_post.status == 2 or request.user.is_staff %}
+                                Черновик:
+                            {% endif %}
+                            <a href="{{ blog_post.get_absolute_url }}">
+                                {{ blog_post.title }}
+                            </a>
                         </h2>
                     {% endeditable %}
                 {% endblock %}
