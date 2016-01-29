@@ -77,13 +77,8 @@
         {% endif %}
 
 
-
-
-
-
-
         {% for blog_post in blog_posts.object_list %}
-            {% if blog_post.status == 2 %}
+            {% if blog_post.status == 2 or request.user.is_staff %}
 
                 {% block blog_post_list_post_title %}
                     {% editable blog_post.title %}
@@ -115,9 +110,6 @@
         {% endfor %}
 
         {% pagination_for blog_posts %}
-
-
-
 
 
         {% if settings.COMMENTS_DISQUS_SHORTNAME %}
