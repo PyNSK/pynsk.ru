@@ -83,7 +83,7 @@
                 {% block blog_post_list_post_title %}
                     {% editable blog_post.title %}
                         <h2>
-                            {% if blog_post.status == 2 or request.user.is_staff %}
+                            {% if blog_post.status != 2 and request.user.is_staff %}
                                 Черновик:
                             {% endif %}
                             <a href="{{ blog_post.get_absolute_url }}">
