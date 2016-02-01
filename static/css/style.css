@@ -380,7 +380,11 @@ figure.floatcenter, .align-center {
 }
 
 .editable-original img {
-    max-width: 500px;
+    max-width: 100%;
+    border:1px solid #021a40;
+}
+.editable-original a {
+    text-decoration: underline;
 }
 
 .tagcloud li {
