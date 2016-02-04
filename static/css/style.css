@@ -387,6 +387,10 @@ figure.floatcenter, .align-center {
     text-decoration: underline;
 }
 
+
+.panel-heading {
+    padding: 3px 15px;
+}
 .tagcloud li {
     padding: 0px;
 }
