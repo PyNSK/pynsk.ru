@@ -26,9 +26,9 @@
 
         <a href="{% url "login" %}?next={{ request.path }}" class="btn btn-info btn-raised">
             <i class="icon-signin"></i> {% trans "Log in" %}</a>
-
-        <a href="{% url "signup" %}?next={{ request.path }}" class="btn btn-success btn-raised">
-            <i class="icon-edit"></i> {% trans "Sign up" %}</a>
+{##}
+{#        <a href="{% url "signup" %}?next={{ request.path }}" class="btn btn-success btn-raised">#}
+{#            <i class="icon-edit"></i> {% trans "Sign up" %}</a>#}
 
     {% endif %}
 </div>

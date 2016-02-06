@@ -39,24 +39,45 @@
 {#{% block container_class %}container-fluid{% endblock container_class %}#}
 {% block body %}
 
-    <div class="col-md-9 middle panel" id="body_content">
 
-        {% block main %}{% endblock %}
-    </div>
+    <div class="row">
 
-    <div class="col-md-3 right">
-
-
-        {% search_form %}
         {% nevercache %}
-            {% include "includes/language_selector.html" %}
-            {% include "includes/user_panel.html" %}
+            {% if messages %}
+                <div class="row">
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         {% endnevercache %}
 
-        {% block right_panel %}
 
-        {% endblock %}
+        <div class="col-md-9 middle panel" id="body_content">
 
+            {% block main %}{% endblock %}
+        </div>
+
+        <div class="col-md-3 right">
+
+
+            {% search_form %}
+            {% nevercache %}
+                {% include "includes/language_selector.html" %}
+                {% include "includes/user_panel.html" %}
+            {% endnevercache %}
+
+            {% block right_panel %}
+
+            {% endblock %}
+
+        </div>
     </div>
 
 {% endblock body %}

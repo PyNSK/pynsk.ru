@@ -60,23 +60,8 @@
     {% include "blocks/nav.html" %}
 {% endblock nav %}
 
-<div class="container">
-    {% nevercache %}
-        {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endnevercache %}
-</div>
-
-
 <main class="content">
+
 
     {% block content_tag %}
         {% block nav_block %}
@@ -84,6 +69,7 @@
                 {% include 'blocks/nav_block.html' %}
             </div>
         {% endblock nav_block %}
+
 
 
         <div class="{% block container_class %}container{% endblock container_class %}">
