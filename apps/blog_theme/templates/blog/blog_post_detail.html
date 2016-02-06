@@ -39,7 +39,9 @@
                         {% block blog_post_list_post_title %}
 
                             <h1>
-                                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+{#                                <a href="{{ blog_post.get_absolute_url }}">#}
+                                    {% editable blog_post.title %}{% endeditable %}
+{#                                </a>#}
                             </h1>
                         {% endblock %}
 
@@ -58,9 +60,9 @@
                             {% keywords_for blog_post as tags %}
                             <footer class="post-info">
                                 <span class="label label-default">{% trans "Date" %}</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time> {{ blog_post.publish_date }}</time>
-    </span>
+                            <span class="published">
+                                <i class="fa fa-calendar"></i><time>{% editable blog_post.publish_date %} {% endeditable %}</time>
+                            </span>
 
 
                                 <span class="label label-default">{% trans "Categories" %}</span>
@@ -73,8 +75,6 @@
                                         {% endfor %}
                                     {% endif %}
                                 {% endwith %}
-
-
 
 
                                 <span class="label label-default">{% trans "Tags" %}</span>
@@ -101,6 +101,9 @@
             </div>
         </div>
     </section>
+
+    {% editable_loader %}
+
 {% endblock %}
 {% block blog_post_detail_rating %}
     <div class="panel panel-default rating">

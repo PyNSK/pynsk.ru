@@ -43,6 +43,7 @@
 
 {% block main %}
 
+
     <div class="col-md-12 blog">
 
         {% if tag or category or year or month or author %}
@@ -122,6 +123,8 @@
         {% endif %}
 
     </div>
+
+    {% editable_loader %}
 
 {% endblock %}
 
