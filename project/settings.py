@@ -219,6 +219,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 
+SEARCH_MODEL_CHOICES = None
 OPTIONAL_APPS = (
     "debug_toolbar",
     "django_extensions",

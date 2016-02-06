@@ -13,19 +13,18 @@ from apps.frontend.views import IndexPage
 admin.autodiscover()
 
 urlpatterns = patterns(
-        '',
-        url("^pagedown/", include(mezzanine_pagedown.urls)),
-        url(r'^(favicon.ico)$', 'django.views.static.serve', {'document_root': dj_settings.STATIC_ROOT}),
-        url(r'^(robots.txt)$', 'django.views.static.serve', {'document_root': dj_settings.STATIC_ROOT}),
-        url(r'^humans.txt$', 'django.views.static.serve',
-            {'document_root': dj_settings.ROOT_PATH, 'path': 'AUTHORS.txt'}),
-        url(r'^admin/', include(admin.site.urls)),
+    '',
+    url("^pagedown/", include(mezzanine_pagedown.urls)),
+    url(r'^(favicon.ico)$', 'django.views.static.serve', {'document_root': dj_settings.STATIC_ROOT}),
+    url(r'^(robots.txt)$', 'django.views.static.serve', {'document_root': dj_settings.STATIC_ROOT}),
+    url(r'^humans.txt$', 'django.views.static.serve',
+        {'document_root': dj_settings.ROOT_PATH, 'path': 'AUTHORS.txt'}),
+    url(r'^admin/', include(admin.site.urls)),
 
-        url(r'^', include('apps.frontend.urls', namespace='pages')),
-        url(r'^tasks/', include('apps.tasks.urls', namespace='tasks')),
-        url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
-        url(r'^$', IndexPage.as_view(), name="home"),
-        url(r'^search/', include('haystack.urls'), name='search'),
+    url(r'^', include('apps.frontend.urls', namespace='pages')),
+    url(r'^tasks/', include('apps.tasks.urls', namespace='tasks')),
+    url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
+    url(r'^$', IndexPage.as_view(), name="home"),
 
 )
 

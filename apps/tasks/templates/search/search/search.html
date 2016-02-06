@@ -1,6 +1,10 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block meta_title %}Поиск{% endblock %}
+{% block head_js %}
+    <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+{% endblock head_js %}
 {% block body %}
 
 
@@ -22,7 +26,6 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
 
                 {% if query %}
@@ -34,7 +37,7 @@
                             <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
                         </p>
                     {% empty %}
-                        <p>No results found.</p>
+                        <p>Ничего не нашли</p>
                     {% endfor %}
 
                     {% if page.has_previous or page.has_next %}
