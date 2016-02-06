@@ -29,11 +29,13 @@
         <link rel="stylesheet"
               href="{% static 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css' %}">
         <link rel="stylesheet" href="{% static 'bootstrap-material-design/dist/css/ripples.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
         {% block head_css %}{% endblock head_css %}
 
         {% block extra_css %}{% endblock %}
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     {% endcompress %}
 
