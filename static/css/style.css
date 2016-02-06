@@ -47,7 +47,7 @@
 }
 
 .nounderline {
-    text-decoration: none
+    /*text-decoration: none*/
 }
 
 .card .card-content p {
@@ -292,12 +292,12 @@ a, a:hover {
 }
 
 .entry-content a {
-    text-decoration: none;
+    /*text-decoration: none;*/
     border-bottom: 1px dotted;
 }
 
 .entry-content a:hover {
-    text-decoration: none;
+    /*text-decoration: none;*/
     border-bottom: 1px solid;
 }
 
@@ -381,16 +381,33 @@ figure.floatcenter, .align-center {
 
 .editable-original img {
     max-width: 100%;
-    border:1px solid #021a40;
+    border: 1px solid #021a40;
 }
+
 .editable-original a {
     text-decoration: underline;
 }
 
+#blog a {
+    text-decoration: underline;
+}
+
+#body_content a {
+    text-decoration: underline;
+}
+
+#blog h1 > a {
+    text-decoration: none;
+}
+
+#body_content h2 > a {
+    text-decoration: blink;
+}
 
 .panel-heading {
     padding: 3px 15px;
 }
+
 .tagcloud li {
     padding: 0px;
 }

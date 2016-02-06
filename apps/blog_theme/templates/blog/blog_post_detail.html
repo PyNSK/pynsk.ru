@@ -39,9 +39,9 @@
                         {% block blog_post_list_post_title %}
 
                             <h1>
-                                {#                                <a href="{{ blog_post.get_absolute_url }}">#}
-                                {% editable blog_post.title %}{% endeditable %}
-                                {#                                </a>#}
+                                <a href="{{ blog_post.get_absolute_url }}">
+                                    {% editable blog_post.title %}{% endeditable %}
+                                </a>
                             </h1>
                         {% endblock %}
 
