@@ -48,6 +48,10 @@
 
 
         {% search_form %}
+        {% nevercache %}
+            {% include "includes/language_selector.html" %}
+            {% include "includes/user_panel.html" %}
+        {% endnevercache %}
 
         {% block right_panel %}
 
