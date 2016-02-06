@@ -1,11 +1,29 @@
 {% load i18n %}
+{% load html_tags %}
 
 {% if form.non_field_errors or form.errors %}
-<div class="form-errors">
-    {% for error in form.non_field_errors %}
-    <div class="alert alert-danger non-field-error" role="alert">{{ error }}</div>
-    {% empty %}
-    <div class="alert alert-danger field-error" role="alert">{% trans "Please correct the errors below." %}</div>
-    {% endfor %}
-</div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-errors">
+
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger non-field-error" role="alert">
+                        <p>
+                            {{ error }}
+                        </p>
+                        {{ form.errors }}
+                    </div>
+                {% empty %}
+                    <div class="alert alert-danger field-error"
+                         role="alert">
+                        <p>
+                            {% trans "Please correct the errors below." %}
+                        </p>
+                        {{ form.errors }}
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endif %}
