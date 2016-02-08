@@ -2,6 +2,7 @@
 import os
 
 from django import VERSION as DJANGO_VERSION
+from django.utils.translation import ugettext_lazy as _
 from pyembed.markdown import PyEmbedMarkdown
 
 ROOT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -184,7 +185,7 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///{0}'.format(
-            os.path.join(ROOT_PATH, 'project.db'))
+        os.path.join(ROOT_PATH, 'project.db'))
     )
 }
 
@@ -321,6 +322,18 @@ SECURE_CONTENT_TYPE_NOSNIFF = False
 VK_APP_ID = 0
 VK_USER_LOGIN = ''
 VK_USER_PASSWORD = ''
+
+ADMIN_MENU_ORDER = (
+    (_("Content"), (
+        "pages.Page", "blog.BlogPost",
+        "generic.ThreadedComment",
+        (_("Media Library"), "media-library"),
+        ("Media Library", "fb_browse"),
+        "generic.Keyword",
+    )),
+    (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
+    (_("Users"), ("auth.User", "auth.Group",)),
+)
 
 if DEBUG:
     VK_PYNSK_GROUP_ID = '-105509411'

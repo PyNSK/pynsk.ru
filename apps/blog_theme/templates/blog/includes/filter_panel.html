@@ -43,7 +43,7 @@
         <div class="panel panel-default widget tags">
             <div class="panel-heading"><h4>{% trans "Tags" %}</h4></div>
             <div class="panel-body">
-                {% for tag in tags|slice:":80" %}
+                {% for tag in tags %}
                     <a href="{% url "blog_post_list_tag" tag.slug %}"
                        class="tag-weight-{{ tag.weight }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
