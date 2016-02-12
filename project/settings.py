@@ -296,8 +296,19 @@ JQUERY_FILENAME = '../../jquery/dist/jquery.min.js'
 RICHTEXT_WIDGET_CLASS = 'mezzanine_pagedown.widgets.PageDownWidget'
 RICHTEXT_FILTER = 'mezzanine_pagedown.filters.custom'
 RICHTEXT_FILTERS = (RICHTEXT_FILTER,)
-PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra', 'codehilite', 'toc')
+PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra', 'codehilite', 'toc', PyEmbedMarkdown())
 RICHTEXT_FILTER_LEVEL = 3
+
+RICHTEXT_ALLOWED_TAGS = (
+    'a', 'abbr', 'acronym', 'address', 'area', 'article', 'aside', 'b', 'bdo', 'big', 'blockquote', 'br', 'button',
+    'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dfn', 'dir', 'div', 'dl', 'dt', 'em',
+    'fieldset',
+    'figure', 'font', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'i', 'img', 'input', 'ins',
+    'kbd', 'label', 'legend', 'li', 'map', 'men', 'nav', 'ol', 'optgroup', 'option', 'p', 'pre', 'q', 's', 'samp',
+    'section', 'select', 'small', 'span', 'strike', 'strong', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot',
+    'th', 'thead', 'tr', 'tt', '', 'ul', 'var', 'wbr')
+RICHTEXT_ALLOWED_TAGS += ('iframe',)
+
 PAGEDOWN_SERVER_SIDE_PREVIEW = False
 
 HAYSTACK_CONNECTIONS = {
