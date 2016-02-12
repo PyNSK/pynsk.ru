@@ -170,6 +170,10 @@
     }
 }
 
+
+iframe {
+    max-width: 100%;
+}
 /*a, a:hover, a:focus {*/
 /*!*color: inherit;*!*/
 /*color: #3f51b5;*/
