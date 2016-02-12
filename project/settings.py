@@ -309,7 +309,7 @@ RICHTEXT_ALLOWED_TAGS = (
     'th', 'thead', 'tr', 'tt', '', 'ul', 'var', 'wbr')
 RICHTEXT_ALLOWED_TAGS += ('iframe',)
 
-PAGEDOWN_SERVER_SIDE_PREVIEW = False
+PAGEDOWN_SERVER_SIDE_PREVIEW = True
 
 HAYSTACK_CONNECTIONS = {
     'default': {
