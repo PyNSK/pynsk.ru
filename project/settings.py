@@ -155,7 +155,7 @@ INSTALLED_APPS = (
 
     'haystack',
 
-    # 'apps.meetup',
+    'apps.meetup',
     # 'apps.subscribers',
     'apps.frontend',
     'apps.dailydigest',
@@ -281,7 +281,7 @@ LOGGING = {
 
 SITE_PREFIX = '/blog'
 BLOG_SLUG = 'blog/'
-# PAGES_SLUG = '/pages/'
+PAGES_SLUG = '/pages/'
 # APPEND_SLASH = True
 BLOG_URLS_DATE_FORMAT = 'day'
 COMMENTS_DISQUS_SHORTNAME = 'pynsk'

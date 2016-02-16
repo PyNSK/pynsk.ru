@@ -23,6 +23,7 @@ urlpatterns = patterns(
 
     url(r'^', include('apps.frontend.urls', namespace='pages')),
     url(r'^tasks/', include('apps.tasks.urls', namespace='tasks')),
+    url(r'^meetup/', include('apps.meetup.urls', namespace='meetup')),
     url(r'^daily/', include('apps.dailydigest.urls', namespace='dailydigest')),
     url(r'^$', IndexPage.as_view(), name="home"),
 
@@ -36,7 +37,7 @@ if settings.USE_MODELTRANSLATION:
 urlpatterns += [
 
     # url(r'^$', RedirectView.as_view(url=reverse('tasks:index')), name='home'),
-    url("", include("mezzanine.urls")),
+    url("", include("project.mezzanine_urls")),
 ]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
