@@ -130,20 +130,26 @@
                             </ul>
                         {% endblock %}
 
-                        {% block blog_post_detail_related_posts %}
-                            {% if blog_post.related_posts.all %}
-                                <div id="related-posts">
-                                    <h3>{% trans 'Related posts' %}</h3>
-                                    <ul class="list-unstyled">
-                                        {% for post in blog_post.related_posts.all %}
-                                            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
+                        {#                        {% block blog_post_detail_related_posts %}#}
+                        {#                            {% if blog_post.related_posts.all %}#}
+                        {#                                <div id="related-posts">#}
+                        {#                                    <h3>{% trans 'Related posts' %}</h3>#}
+                        {#                                    <ul class="list-unstyled">#}
+                        {#                                        {% for post in blog_post.related_posts.all %}#}
+                        {#                                            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>#}
+                        {#                                        {% endfor %}#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            {% endif %}#}
+                        {#                        {% endblock %}#}
 
-                        {% endblock %}
 
+                        <hr>
+                        <div id="related-posts">
+                            <h4>Предлагаем почитать:</h4>
+                            <script id="oQ4OzzLz5hzmfn5-">if (window.relap) window.relap.ar('oQ4OzzLz5hzmfn5-');</script>
+                        </div>
+                        <hr>
 
                         {% block blog_post_detail_comments %}
                             {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
