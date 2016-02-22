@@ -346,6 +346,10 @@ figure.floatcenter, .align-center {
     margin-bottom: 11px;
 }
 
+.codehilite pre {
+    background-color: inherit;
+}
+
 .highlighttable pre {
     /* Removes bootstrap default margin-bottom */
     margin-bottom: 0px;
