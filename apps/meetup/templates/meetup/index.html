@@ -1,0 +1,26 @@
+{% extends 'meetup/layout/layout.html' %}
+
+
+{% load static from staticfiles %}
+
+
+{% block title %}PyNSK{% endblock %}
+
+
+{% block twitter %}
+    {{ block.super }}
+    <meta name="twitter:title" content="PyNSK - Python сообщество">
+    <meta name="twitter:description" content="PyNSK — это ежемесячные встречи разработчиков на Python.
+Несколько человек выступают перед публикой с докладами, так или иначе связанными с веб-разработкой, Python и Django.
+Не обходится и без самого интересного: общения в кулуарах.">
+{% endblock %}
+
+
+{% block body %}
+{#    {% if main_event %}#}
+{#      {% include 'meetup/blocks/main_event_header.html' with event=main_event %}#}
+{#    {% endif %}#}
+
+    {% include 'meetup/blocks/speakers.html' %}
+{#    {% include 'meetup/blocks/archive.html' %}#}
+{% endblock %}

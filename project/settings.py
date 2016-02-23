@@ -33,6 +33,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(ROOT_PATH, 'static'),
     os.path.join(ROOT_PATH, 'apps', 'blog_theme', 'static'),
+    os.path.join(ROOT_PATH, 'apps', 'meetup', 'static'),
 )
 
 STATICFILES_FINDERS = (
