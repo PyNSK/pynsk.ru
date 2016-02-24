@@ -400,6 +400,9 @@ figure.floatcenter, .align-center {
     text-decoration: underline;
 }
 
+.blog img {
+    max-width: 100%;
+}
 #body_content a {
     text-decoration: underline;
 }
