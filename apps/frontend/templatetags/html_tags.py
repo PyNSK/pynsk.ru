@@ -32,7 +32,7 @@ def projects():
         {
             'title': 'Недельный Python Дайджест',
             'description': 'Собираем актуальные новости из мира Python',
-            'url': 'http://pythondigest.ru',
+            'url': 'https://pythondigest.ru',
         },
         {
             'title': 'Дневной Python Дайджест',
@@ -43,6 +43,11 @@ def projects():
             'title': 'Задачи',
             'description': 'Как же практика без теории? У нас свой сборник задач',
             'url': reverse('tasks:index'),
+        },
+        {
+            'title': 'Тесты',
+            'description': 'Мы разработали тесты для проверки знаний',
+            'url': 'https://tests.pynsk.ru',
         },
     ]
 
