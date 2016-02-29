@@ -44,11 +44,11 @@ def projects():
             'description': 'Как же практика без теории? У нас свой сборник задач',
             'url': reverse('tasks:index'),
         },
-        {
-            'title': 'Встречи',
-            'description': 'Мы регулярно проводим очные встречи',
-            'url': reverse('meetup:index'),
-        },
+        # {
+        #     'title': 'Встречи',
+        #     'description': 'Мы регулярно проводим очные встречи',
+        #     'url': reverse('meetup:index'),
+        # },
         {
             'title': 'Тесты',
             'description': 'Мы разработали тесты для проверки знаний',
