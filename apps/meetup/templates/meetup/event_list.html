@@ -1,10 +1,9 @@
-{% extends 'layout/layout.html' %}
+{% extends 'base/base.html' %}
 
 
-{% block title %}Все митапы Moscow Django{% endblock %}
+{% block meta_title %}Все митапы Moscow Django{% endblock %}
 
 
-{% block page %}
-    {% include 'blocks/archive.html' %}
-    {% include 'blocks/share.html' with page='archive' %}
+{% block body %}
+    {% include 'meetup/blocks/archive.html' %}
 {% endblock %}

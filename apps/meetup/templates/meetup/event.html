@@ -1,10 +1,10 @@
-{% extends 'layout/fotorama.html' %}
+{% extends 'base/base.html' %}
 
 
 {% load static from staticfiles %}
 
 
-{% block title %}{{ event }}{% endblock %}
+{% block meta_title %}{{ event }}{% endblock %}
 
 
 {% block twitter %}
@@ -14,16 +14,15 @@
 {% endblock %}
 
 
-{% block page %}
+{% block body %}
     <section class="section-event">
-        {% include 'blocks/event_header.html' %}
+        {% include 'meetup/blocks/event_header.html' %}
         <div class="container">
-            {% include 'blocks/translation.html' %}
-            {% include 'blocks/sidebar.html' %}
-            {% include 'blocks/event_talks.html' %}
-            {% include 'blocks/sponsors.html' %}
-            {% include 'blocks/gallery.html' %}
-            {% include 'blocks/share.html' %}
+
+            {% include 'meetup/blocks/event_talks.html' %}
+{#            {% include 'meetup/blocks/sponsors.html' %}#}
+{#            {% include 'meetup/blocks/gallery.html' %}#}
+{#            {% include 'meetup/blocks/share.html' %}#}
         </div>
     </section>
 {% endblock %}

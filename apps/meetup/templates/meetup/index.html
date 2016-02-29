@@ -1,10 +1,14 @@
-{% extends 'meetup/layout/layout.html' %}
+{% extends 'base/base.html' %}
 
 
 {% load static from staticfiles %}
 
 
-{% block title %}PyNSK{% endblock %}
+{% block meta_title %}Встречи{% endblock %}
+
+{% block extra_css %}
+
+{% endblock %}
 
 
 {% block twitter %}
@@ -22,5 +26,5 @@
 {#    {% endif %}#}
 
     {% include 'meetup/blocks/speakers.html' %}
-{#    {% include 'meetup/blocks/archive.html' %}#}
+    {% include 'meetup/blocks/archive.html' %}
 {% endblock %}

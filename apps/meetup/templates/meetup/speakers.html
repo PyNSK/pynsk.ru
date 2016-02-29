@@ -1,9 +1,9 @@
-{% extends 'layout/layout.html' %}
+{% extends 'base/base.html' %}
 
 
-{% block title %}Докладчики @ Moscow Django{% endblock %}
+{% block meta_title %}Докладчики{% endblock %}
 
 
-{% block page %}
-    {% include "blocks/speakers.html" %}
+{% block body %}
+    {% include "meetup/blocks/speakers.html" %}
 {% endblock %}
