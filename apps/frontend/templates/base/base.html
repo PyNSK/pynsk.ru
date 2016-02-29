@@ -4,14 +4,34 @@
 {% load mezzanine_tags %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+<!--[if lt IE 7 ]><html class="ie6 ie67 ie no-js" lang="{{ LANGUAGE_CODE }}"><![endif]-->
+<!--[if IE 7 ]>   <html class="ie7 ie67 ie no-js" lang="{{ LANGUAGE_CODE }}"><![endif]-->
+<!--[if IE 8 ]>   <html class="ie8 ie no-js" lang="{{ LANGUAGE_CODE }}"><![endif]-->
+<!--[if IE 9 ]>   <html class="ie9 ie no-js" lang="{{ LANGUAGE_CODE }}"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="{{ LANGUAGE_CODE }}" class="no-js"><!--<![endif]-->
 <head>
 
     <!-- meta -->
     <meta charset="utf-8">
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% block twitter %}
+        <meta name="twitter:url" content="{{ request.build_absolute_uri }}">
+        <meta name="twitter:site" content="@py_nsk">
+    {% endblock %}
+
+    <script>
+        if (window.location.hash) {
+            setTimeout(function () {
+                window.scrollTo(0, 0);
+            }, 1);
+        }
+    </script>
 
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     <title>
@@ -36,6 +56,8 @@
         {% block extra_css %}{% endblock %}
 
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{#        <link rel="stylesheet" href="{% static 'css/gen_main.css' %}">#}
+
 
     {% endcompress %}
 
@@ -52,6 +74,7 @@
 
 
     {% block extra_head %}{% endblock %}
+
 
 </head>
 

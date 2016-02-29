@@ -9,18 +9,46 @@ from django.db.models import Count
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, get_object_or_404
 from django.utils import six
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.decorators.csrf import csrf_exempt
 
 from .models import Talk, Photo, Speaker, Event, Tutorial, Vote
-from .utils import subscribe_mail, validate_email, set_vote_cookie, can_vote
+from .utils import set_vote_cookie, can_vote
 
+
+class IndexPage(ListView):
+    template_name = 'meetup/index.html'
+    context_object_name = 'events'
+
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            qs = Event.objects.all()
+        else:
+            qs = Event.archived.all()
+
+        return qs.prefetch_related('talks', 'talks__speaker', 'talks__event')[:3]
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexPage, self).get_context_data(**kwargs)
+
+        # TODO: choose how select people for index page
+        # I see two options:
+        # By last talks -  Speaker.objects.order_by("-talks__event__id", "talk__position")[:9]
+        # Random: Speaker.objects.order_by("?")[:9]
+
+        context.update({
+            'speakers': Speaker.objects.order_by("?")[:10],
+            'main_event': Event.spotlight(self.request.user.is_staff),
+            'show_more_link': True,
+            'can_vote': can_vote(self.request)
+        })
+        return context
 
 
 class EventsList(ListView):
-    template_name = 'event_list.html'
+    template_name = 'meetup/event_list.html'
     queryset = Event.visible.prefetch_related('talks', 'talks__speaker', 'talks__event')
     context_object_name = 'events'
 
@@ -33,7 +61,7 @@ class EventsList(ListView):
 
 
 class EventPage(DetailView):
-    template_name = 'event.html'
+    template_name = 'meetup/event.html'
     slug_url_kwarg = 'number'
     slug_field = 'number'
 
@@ -52,7 +80,7 @@ class EventPage(DetailView):
 
 
 class TalkPage(DetailView):
-    template_name = 'talk.html'
+    template_name = 'meetup/talk.html'
     slug_url_kwarg = 'talk_slug'
 
     def get_queryset(self):
@@ -72,13 +100,13 @@ class TalkPage(DetailView):
 
 
 class SpeakerList(ListView):
-    template_name = 'speakers.html'
+    template_name = 'meetup/speakers.html'
     queryset = Speaker.objects.all().order_by('name')
     context_object_name = 'speakers'
 
 
 class SpeakerPage(DetailView):
-    template_name = 'speaker.html'
+    template_name = 'meetup/speaker.html'
 
     def get_object(self, queryset=None):
         return get_object_or_404(
@@ -88,7 +116,7 @@ class SpeakerPage(DetailView):
 
 
 class AboutPage(TemplateView):
-    template_name = 'about.html'
+    template_name = 'meetup/about.html'
 
     def get_context_data(self, **kwargs):
         context = super(AboutPage, self).get_context_data(**kwargs)
@@ -99,7 +127,7 @@ class AboutPage(TemplateView):
 
 
 class LivePage(TemplateView):
-    template_name = 'live.html'
+    template_name = 'meetup/live.html'
 
     def get_context_data(self, **kwargs):
         context = super(LivePage, self).get_context_data(**kwargs)
@@ -111,18 +139,18 @@ class LivePage(TemplateView):
 
 
 class TutorialList(ListView):
-    template_name = 'tutorials.html'
+    template_name = 'meetup/tutorials.html'
     queryset = Tutorial.objects.all().order_by('title')
     context_object_name = 'tutorials'
 
 
 class TutorialPage(DetailView):
-    template_name = 'tutorial.html'
+    template_name = 'meetup/tutorial.html'
     model = Tutorial
 
 
 class Py3Page(TemplateView):
-    template_name = 'py3.html'
+    template_name = 'meetup/py3.html'
 
     def get_context_data(self, **kwargs):
         context = super(Py3Page, self).get_context_data(**kwargs)
@@ -136,7 +164,7 @@ class Py3Page(TemplateView):
 
 
 class VoteResults(TemplateView):
-    template_name = 'vote_results.html'
+    template_name = 'meetup/vote_results.html'
 
     def get_context_data(self, **kwargs):
         context = super(VoteResults, self).get_context_data(**kwargs)

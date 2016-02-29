@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+
+
+{% block meta_title %}{{ speaker }}{% endblock %}
+{% block facebook %}{{ speaker.avatar_url }}{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="speaker">
+        <div class="container">
+            <div class="col-md-2">
+                <img src="{{ speaker.avatar_url }}" alt="{{ speaker }}">
+            </div>
+
+            <div class="col-md-10">
+                <h1 class="speaker__name">
+                    {{ speaker }}
+                </h1>
+                {% if speaker.company_name %}
+                    <h4>
+                        {{ speaker.company_name }}
+                    </h4>
+                {% endif %}
+
+                {% if speaker.description %}
+                    <p class="speaker-talks__description">
+                        {{ speaker.description }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% for talk in speaker.talks.all %}
+
+            <hr>
+            <h2><a href="{{ talk.event.get_absolute_url }}">
+                {{ talk.event }}
+            </a></h2>
+            <h3><a href="{{ talk.get_absolute_url }}"
+                   class="speaker-talks__item-name-link">{{ talk }}</a></h3>
+            <div class="speaker-talks__item-description">
+                {{ talk.description|safe }}
+            </div>
+            <section class="talk-resources">
+                <article class="talk-resources__item text-center">
+                    {% if talk.video_data %}
+                        {{ talk.video_data.html|safe }}
+                    {% endif %}
+                    {% if not talk.video_data and talk.presentation_data %}
+                        {% if talk.presentation_data %}
+                            {% if talk.presentation_data.type == 'link' %}
+                                <a class="talk__resource-link"
+                                   href="{{ talk.presentation_data.url }}">{{ talk }}</a>
+                            {% else %}
+                                {{ talk.presentation_data.html|safe }}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </article>
+            </section>
+        {% endfor %}
+    </div>
+{% endblock %}

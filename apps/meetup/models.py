@@ -51,7 +51,7 @@ class Talk(StatusModel):
 
     @permalink
     def get_absolute_url(self):
-        return 'talk', [self.event.number, self.slug]
+        return 'meetup:talk', [self.event.number, self.slug]
 
     def set_embedly_data(self, field_name):
         original_field_value = getattr(self, 'original_{0}'.format(field_name))
@@ -62,7 +62,7 @@ class Talk(StatusModel):
                 embedly_key = getattr(settings, 'EMBEDLY_KEY')
                 if embedly_key:
                     client = Embedly(embedly_key)
-                    setattr(self, data_field_name, client.oembed(new_field_value)._data)
+                    setattr(self, data_field_name, client.oembed(new_field_value).data)
             else:
                 setattr(self, data_field_name, "")
         setattr(self, 'original_{0}'.format(field_name), new_field_value)
@@ -131,7 +131,7 @@ class Event(StatusModel):
 
     @permalink
     def get_absolute_url(self):
-        return 'event', [self.number]
+        return 'meetup:event', [self.number]
 
     @property
     def is_active(self):
@@ -204,7 +204,7 @@ class Speaker(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return 'speaker', [self.slug]
+        return 'meetup:speaker', [self.slug]
 
     @property
     def avatar_url(self):
@@ -289,7 +289,7 @@ class Tutorial(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return 'tutorial', [self.slug]
+        return 'meetup:tutorial', [self.slug]
 
     class Meta:
         verbose_name = u'Полезный материал'

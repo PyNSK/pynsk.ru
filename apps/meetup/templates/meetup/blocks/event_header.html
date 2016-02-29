@@ -3,7 +3,7 @@
 <div class="event-header">
     <div class="container">
         <h1 class="heading">
-            <span>{{ event.name }} № {{ event.number }}
+            <span>{{ event.name }} № {{ event.number }}:
                 {% if event.date %}
                     <span class="event-date">
                         {{ event.date|ru_strftime:"%d %B %Y" }}
@@ -18,4 +18,5 @@
             </span>
         </h1>
     </div>
+    <hr>
 </div>

@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+
+{% load static from staticfiles %}
+
+
+{% block meta_title %}{{ event }}{% endblock %}
+
+
+{% block twitter %}
+    {{ block.super }}
+    <meta name="twitter:title" content="{{ event }}">
+    <meta name="twitter:description" content="{{ event.description }}">
+{% endblock %}
+
+
+{% block body %}
+    <section class="section-event">
+        {% include 'meetup/blocks/event_header.html' %}
+        <div class="container">
+
+            {% include 'meetup/blocks/event_talks.html' %}
+{#            {% include 'meetup/blocks/sponsors.html' %}#}
+{#            {% include 'meetup/blocks/gallery.html' %}#}
+{#            {% include 'meetup/blocks/share.html' %}#}
+        </div>
+    </section>
+{% endblock %}

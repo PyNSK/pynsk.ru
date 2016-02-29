@@ -45,6 +45,11 @@ def projects():
             'url': reverse('tasks:index'),
         },
         {
+            'title': 'Встречи',
+            'description': 'Мы регулярно проводим очные встречи',
+            'url': reverse('meetup:index'),
+        },
+        {
             'title': 'Тесты',
             'description': 'Мы разработали тесты для проверки знаний',
             'url': 'https://tests.pynsk.ru',

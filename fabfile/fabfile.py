@@ -17,10 +17,10 @@ def pull():
 
 def deploy():
     pull()
-    update_libs()
-    migrate()
+    # update_libs()
+    # migrate()
     static()
-    restart()
+    # restart()
 
 
 def update_libs():
