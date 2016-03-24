@@ -347,7 +347,8 @@ figure.floatcenter, .align-center {
 }
 
 .codehilite pre {
-    background-color: inherit;
+    background-color: #f8f8f2;
+    color: #272822;
 }
 
 .highlighttable pre {
