@@ -33,3 +33,5 @@ pip-log.txt
 deploy_settings.py
 components
 whoosh_index
+
+.vagrant/
