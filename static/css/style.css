@@ -200,17 +200,21 @@ body {
 }
 
 .navbar-default {
-    background-color: #285880 !important;
-    border-color: #285880 !important;
-    color: #e6f1ff !important;
+    background-color: #f8f8f8 !important;
+    color: #5a5a5c !important;
+    border-bottom: 2px solid #f6f6f6;
 }
 
 .navbar-default .navbar-brand {
-    color: #e6f1ff;
+    color: #5a5a5c;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #e6f1ff;
+    color: #5a5a5c;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    text-decoration: underline;
 }
 
 #tipue_search_input {
@@ -449,4 +453,34 @@ figure.floatcenter, .align-center {
     color: #214d6e !important;
     text-transform: uppercase;
     font-size: 18px;
+}
+
+.btn-donate {
+    border: 3px solid #ebd572;
+    padding: 3px;
+}
+
+.btn-donate:hover {
+    box-shadow: 5px 5px 5px #6d645d;
+}
+
+header {
+    padding-top: 62px;
+    background-color: white;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+header h1 {
+    float: right;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.logo-on-main {
+    width: 25%;
+}
+
+header .container {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

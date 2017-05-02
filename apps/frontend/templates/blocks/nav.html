@@ -23,12 +23,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
-
-            <a class="navbar-brand" href="/" style="font-weight: 600; font-size: 18px">
-                {{ settings.SITE_TITLE }}
-            </a>
-
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +45,11 @@
                     {% menu_element admin_page 'Админка' %}
                 {% endif %}
 
-                <a href="{% url 'pages:donate' %}" class="btn btn-raised bg-warning" role="button">Поддержи проект</a>
+                <form action="{% url 'pages:donate' %}" class="navbar-form navbar-right">
+                    <button class="btn-donate" type="submit">
+                    Поддержи проект
+                    </button>
+                </form>
             </ul>
         </div>
         <!-- end of /.navbar-collapse -->
